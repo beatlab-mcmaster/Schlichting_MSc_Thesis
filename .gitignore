@@ -1,3 +1,9 @@
+# JLS: added files from tex knit
+/*.synctex.gz
+/*.lof
+/*.lot
+/*.toc
+
 # History files
 .Rhistory
 .Rapp.history

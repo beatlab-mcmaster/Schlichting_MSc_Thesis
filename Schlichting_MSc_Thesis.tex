@@ -251,11 +251,11 @@ Finally, a heartfelt thank you to my friends in the Department of Psychology, Ne
 
 \newpage
 
-
+\listoffigures
 
 \newpage
 
-
+\listoftables
 
 \newpage
 
@@ -362,7 +362,7 @@ The events took place in McMaster University's Large Interactive Virtual Environ
 
 \subsubsection{Surveys}\label{surveys}
 
-All surveys were coded in jsPsych (Leeuw, Gilbert, \& Luchterhandt, 2023) and hosted through JATOS (Lange, Kühn, \& Filevich, 2015) on our lab server located at McMaster University, and managed by McMaster's Research and High Performance Computing Support. Codebooks and print versions are available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis/surveys}. All participants completed the survey via web browser: In-person participants were provided with LIVELab's Samsung Galaxy Tab A 8.0 SM-T380 tablets, which they could store in a pouch attached to their seat during the event. Livestream participants used their own machines. Since this was a live event, participants had limited time to fill out the surveys before the event and at intermission so as not to delay the performance and the film screening. To ensure that participants progressed through the surveys as planned, we monitored the incoming data using the JATOS logs. If participants did not complete the surveys in the designated time, we skipped the remaining questions so that the surveys would not distract participants from the event. For in-person participants, research assistants went up to their seats and manually skipped the remaining survey questions, whereas for livestream participants, we signaled the JATOS server to move every participant to the livestream once the first and second half of the event began, respectively.
+All surveys were coded in jsPsych (Leeuw, Gilbert, \& Luchterhandt, 2023) and hosted through JATOS (Lange, Kühn, \& Filevich, 2015) on our lab server located at McMaster University, and managed by McMaster's Research and High Performance Computing Support. Codebooks and print versions are available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis/tree/main/surveys}. All participants completed the survey via web browser: In-person participants were provided with LIVELab's Samsung Galaxy Tab A 8.0 SM-T380 tablets, which they could store in a pouch attached to their seat during the event. Livestream participants used their own machines. Since this was a live event, participants had limited time to fill out the surveys before the event and at intermission so as not to delay the performance and the film screening. To ensure that participants progressed through the surveys as planned, we monitored the incoming data using the JATOS logs. If participants did not complete the surveys in the designated time, we skipped the remaining questions so that the surveys would not distract participants from the event. For in-person participants, research assistants went up to their seats and manually skipped the remaining survey questions, whereas for livestream participants, we signaled the JATOS server to move every participant to the livestream once the first and second half of the event began, respectively.
 
 \subsubsection{Physiological measures}\label{physiological-measures}
 
@@ -500,7 +500,7 @@ To test the influence of closeness, empathic concern, problem awareness, and beh
 
 \subsubsection{Software}\label{software}
 
-All analyses were performed in R 4.4.1 (R Core Team, 2024), using custom scripts and third-party packages. Data and the code required to reproduce everything in this document (created with \emph{papaja}, Aust \& Barth, 2023) is available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis}. Required packages are detailed in the document source code, and below, alongside the relevant analysis. All figures are created with \emph{ggplot2} (Wickham, 2016), \emph{ggpubr} (Kassambara, 2023), and \emph{png} (Urbanek, 2022) unless stated otherwise. Error bars represent 95\% confidence intervals (CI) based on 1000 bootstrap resamples implemented in \emph{Hmisc} (Harrell Jr, 2024).
+All analyses were performed in R 4.4.1 (R Core Team, 2024), using custom scripts and third-party packages. Data and the code required to reproduce everything in this document (created with \emph{papaja}, Aust \& Barth, 2023) is available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis}. Required packages are detailed in the document source code (\url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis/blob/main/Schlichting_MSc_Thesis.Rmd}), and below, alongside the relevant analysis. All figures are created with \emph{ggplot2} (Wickham, 2016), \emph{ggpubr} (Kassambara, 2023), and \emph{png} (Urbanek, 2022) unless stated otherwise. Error bars represent 95\% confidence intervals (CI) based on 1000 bootstrap resamples implemented in \emph{Hmisc} (Harrell Jr, 2024).
 
 \section{Results}\label{results}
 
@@ -587,7 +587,7 @@ Among the fixed effects, medium had a significant small effect on closeness, \(\
 
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1} \caption{A: Mean and CI of the change in closeness with Anna Vasquez from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of closeness ratings across the event by time point (x-axis) and order of the media (line style). Closeness was rated on a visual analog scale ranging from 1 (0\% overlap) to 7 (90\% overlap).}\label{fig:closeness-plots}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1} \caption{A: Mean and CI of the change in closeness with Anna Vasquez from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of closeness ratings across the event by time point (x-axis) and order of the media (line style). Closeness was rated on a visual analog scale ranging from 1 (0\% overlap) to 7 (90\% overlap). *\(p < .05\), ***\(p < .001\), n.s. = not significant.}\label{fig:closeness-plots}
 \end{figure}
 
 Seeing that the event increased audiences' bonding with Anna Vasquez, we were interested in exploring whether this bonding effect indeed stemmed from an increased bonding with the musicians, which extended to Anna Vasquez by affiliation. Participants' feelings of closeness with the musicians increased from baseline to the end of the event (Allen Otte: \(M = 1.45\), \(SD = 1.77\); John Lane: \(M = 1.30\), \(SD = 1.64\)). Closeness with the in-person audience showed a smaller increase (\(M = 0.49\), \(SD = 1.65\)), whereas closeness with the livestream audience barely changed (\(M = 0.08\), \(SD = 1.36\), see Figure \ref{fig:closeness-lineplots}).
@@ -609,7 +609,7 @@ Time had a moderate effect on empathic concern, \(\beta = 0.18\), \(t (80) = 5.6
 
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1} \caption{A: Mean and CI of the change in empathic concern from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of empathy ratings across the event by time point (x-axis) and order of the media (line style). Empathy was rated on a scale ranging from 1 (not at all) to 7 (extremely).}\label{fig:empathy-plots}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1} \caption{A: Mean and CI of the change in empathic concern from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of empathy ratings across the event by time point (x-axis) and order of the media (line style). Empathy was rated on a scale ranging from 1 (not at all) to 7 (extremely). *\(p < .05\), **\(p < .01\), ***\(p < .001\), n.s. = not significant.}\label{fig:empathy-plots}
 \end{figure}
 
 \subsubsection{Awareness}\label{awareness}
@@ -621,7 +621,7 @@ Hypothesis 3 predicted that increases in problem awareness would be larger after
 
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1} \caption{A: Mean and CI of the change in problem awareness from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of awareness ratings across the event by time point (x-axis) and order of the media (line style). Awareness was rated on a scale ranging from 1 (strongly disagree) to 7 (strongly agree).}\label{fig:awareness-plots}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1} \caption{A: Mean and CI of the change in problem awareness from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of awareness ratings across the event by time point (x-axis) and order of the media (line style). Awareness was rated on a scale ranging from 1 (strongly disagree) to 7 (strongly agree). **\(p < .01\), ***\(p < .001\)}\label{fig:awareness-plots}
 \end{figure}
 
 
