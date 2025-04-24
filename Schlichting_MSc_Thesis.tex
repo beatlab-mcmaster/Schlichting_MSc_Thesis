@@ -1,0 +1,1000 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  man,floatsintext]{apa6}
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+\makeatletter
+\usepackage{etoolbox}
+\patchcmd{\maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\usepackage{csquotes}
+\geometry{top=3.8cm,bottom=3.8cm}
+
+
+\pagenumbering{roman}
+\makeatletter
+\fancypagestyle{titlepage}{\lhead{ } \rhead{ } }
+\fancypagestyle{secondtitle}{\lhead{ } \rhead{ } }
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={HOW MUSIC ADVOCACY INFLUENCES AUDIENCES' PROSOCIALITY},
+  pdflang={en-EN},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{HOW MUSIC ADVOCACY INFLUENCES AUDIENCES' PROSOCIALITY}
+\author{\phantom{0}}
+\date{}
+
+
+\shorttitle{M.Sc. Thesis - J. Schlichting; McMaster University - PNB}
+
+\affiliation{\phantom{0}}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{secondtitle} 
+\begin{center}
+
+By JOSHUA L. SCHLICHTING, B.Sc.  
+\newline
+
+A Thesis Submitted to the School of Graduate Studies in Partial Fulfilment of the Requirements for the Degree Master of Science  
+\newline
+
+McMaster University © Copyright by Joshua L. Schlichting, April 2025  
+\end{center}
+
+\newpage
+
+\section*{Descriptive Note}\label{descriptive-note}
+
+\setcounter{page}{2}
+
+McMaster University MASTER OF SCIENCE (2025)
+
+Hamilton, Ontario (Psychology, Neuroscience \& Behaviour)
+\newline
+
+TITLE: How music advocacy influences audiences' prosociality
+
+AUTHOR: Joshua L. Schlichting, B.Sc. (Heidelberg University)
+
+SUPERVISOR: Dr.~Lauren K. Fink
+
+NUMBER OF PAGES: xiv, 66
+
+\newpage
+
+\section*{Lay Abstract}\label{lay-abstract}
+
+Charity concerts are popular for rallying support for charity causes. Yet, we know little about why attending a charity concert motivates audiences to support the cause of the event. Here, we set out to understand how attending a charity concert affects thoughts and feelings about the charity cause, and whether these thoughts and feelings lead to actions in support of the charity cause.
+
+We hosted a live performance about wrongful imprisonment and compared its effects to those of a documentary film about the same topic. We also compared audiences attending the event in-person with those watching a livestream. We found that watching the performance increased empathy -- meaning that both in-person and livestream audiences were better able to imagine how it feels to be wrongfully imprisoned -- to a similar extent as watching the film. People who felt more empathy were also more determined to support a charity fighting wrongful imprisonment.
+
+\newpage
+
+\section*{Abstract}\label{abstract}
+
+When advocating for social justice, music is commonly used to rally support for justice-seeking groups. Music has been shown to increase prosocial behaviour like cooperation and helping, but this effect has mostly been investigated among the individuals involved in the music experience. It is thus unclear how music can foster prosociality towards external groups. Music can strengthen social bonding or empathic concern, which could facilitate prosociality, but might require shared co-presence. Alternatively, prosociality could emerge from problem awareness, but we lack empirical evidence as to whether music can effectively raise awareness for a specific issue. Here, we investigate the role of bonding, empathy, and awareness in social justice advocacy through music.
+
+We organized a charity event featuring a documentary film and a percussion performance about wrongful imprisonment, shown in counterbalanced order. 94 audience members attending in-person or in a livestream reported their awareness of wrongful imprisonment, bonding and empathy with those affected, and intentions to support a relevant charity, before and after each presentation. At the end of the event, we assessed charitable behaviour.
+
+The event increased bonding, empathy, and awareness of in-person and livestream audiences. Comparing performance and film, both had a similar effect on empathy and awareness, while the film afforded steeper increases in bonding. Notably, seeing both media in succession had an additive effect on all three variables. Two-thirds of participants performed one or more charitable behaviours, predicted by behavioural intentions. Intentions did not change significantly throughout the event but were predicted by empathy.
+
+In conclusion, live and livestreamed charity concerts can foster empathy for external justice-seeking groups to rally support for their fight for justice. The results of this study contribute to the interdisciplinary scholarship on prosociality and directly inform the design of musical experiences that advocate for social justice.
+
+\newpage
+
+\section*{Acknowledgements}\label{acknowledgements}
+
+I would like to thank my supervisor, Dr.~Lauren Fink, for your mentorship and support that went way beyond this thesis. You inspire me to be a good scientist in every sense. I would also like to thank my committee members, Dr.~Laurel Trainor and Dr.~John Iversen, for inspiring conversations and helpful feedback. To my fellow graduate students in the BEAT Lab, Maya Flannery and Shreshth Saxena, you have been my role models over the past two years and I thank you for all your help and company along the way. Many thanks to all those involved in the Innocents data collection: LIVELab staff, QQ and thesis students, grad volunteers, and of course Allen Otte and John Lane.
+
+Finally, a heartfelt thank you to my friends in the Department of Psychology, Neuroscience and Behaviour, at McMaster Musical Theatre and McMaster A Capella, in Hamilton and the GTA - your social bonding, empathy and prosociality made me feel that I belong. Thank you to my friends and family back home for all your love and support despite the distance, and to my partner Leo for countless hours on the telephone that meant so much to me.
+
+\newpage
+
+\section*{Table of Contents}\label{table-of-contents}
+
+\tableofcontents
+
+\newpage
+
+
+
+\newpage
+
+
+
+\newpage
+
+\section*{List of Abbreviations and Symbols}\label{list-of-abbreviations-and-symbols}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  CI: confidence interval
+\item
+  LIVELab: Large Interactive Virtual Environment laboratory
+\item
+  LMM: linear mixed model
+\item
+  LRT: likelihood ratio test
+\item
+  ML: maximum likelihood
+\item
+  NAM: Norm Activation Model
+\item
+  OR: odds ratio
+\item
+  REML: restricted maximum likelihood
+\item
+  TPB: Theory of Planned Behaviour
+\end{enumerate}
+
+\newpage
+
+\section*{Declaration of Academic Achievement}\label{declaration-of-academic-achievement}
+
+I declare that I, Joshua Schlichting, am the author of this thesis. My supervisor, Dr.~Lauren Fink, was responsible for the funding and administration of the project, contributed to the conceptualization and methodology, and reviewed and edited this work.
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Introduction}\label{introduction}
+
+When advocating for social justice, music is commonly used to rally support for justice-seeking groups. Countless song lyrics address topics such as racism, sexism, or societal crises. Protests are often accompanied by music performances and collective chanting. Charity concerts are a popular format to encourage donations for societal causes (e.g., Clarke, DeNora, \& Vuoskoski, 2015; Fink et al., 2021; Schreiber, 2019). In these contexts, the music is performed with the communicative intention to raise awareness, elicit positive attitudes, or motivate supportive behaviour regarding a societal issue. Crucially, such music advocacy typically calls for prosociality towards a justice-seeking group other than the musician or the audience.
+
+Music has been shown to increase prosocial behaviour like cooperation and helping (Cirelli, Einarson, \& Trainor, 2014; Hove \& Risen, 2009; Kirschner \& Tomasello, 2010; Mogan, Fischer, \& Bulbulia, 2017; Wiltermuth \& Heath, 2009), with the literature suggesting that the togetherness of a music experience can strengthen social bonds and inspire prosociality towards other present individuals (Hove, 2008; Rabinowitch, 2023). However, the research has mostly been restricted to prosocial effects among the individuals sharing the music experience. Thus, music psychology currently does not offer an explanation for how music in social justice contexts, like charity concerts, could foster prosociality for justice-seeking groups who are not present during the music experience. Social psychology offers alternative theoretical accounts, positing that prosociality can arise from being aware of an injustice, or from feeling empathetic with the person or group in need (Batson, 1987; Batson, Lishner, \& Stocks, 2015; Schwartz, 1977). Since these theories have not yet been applied to music, it is unclear whether heightened empathy or awareness cause the prosocial outcomes of music advocacy. In this study, we integrate theories from social and music psychology to investigate how a charity concert advocates for social justice, as measured by self-reported audience reactions and observed behaviours.
+
+\subsection{Synchrony and Social Bonding}\label{music-bonding}
+
+Music is an inherently social activity, which might be why the positive effects of music on groups are well-studied. Numerous studies have shown that synchronous musical experiences increase cooperation and helping behaviour (e.g., Cirelli et al., 2014; Kirschner \& Tomasello, 2010; Wiltermuth \& Heath, 2009). The mechanism suggested to underlie these prosocial effects is that interpersonal synchrony blurs the distinction between self and other, thereby creating affiliation or bonding between the co-actors (Hove, 2008). The strengthened social bonds, in turn, facilitate prosocial behaviour among the co-actors (Wiltermuth \& Heath, 2009). Indeed, a meta-analysis of 42 experimental studies confirmed effects of synchrony on both social bonding and prosocial behaviour (Mogan et al., 2017). Alternatively, or in addition to, the effects of synchrony, music shares aspects of other behaviours that have been shown to strengthen social bonds: Many music activities involve the joint action elements shared goals, and shared attention, regarding the musical outcome. Furthermore, music often involves imitation in the sense of monitoring and reacting to the actions of a co-actor. Beyond active music making, merely listening to music can help the listener feel closer to the musicians (Swarbrick \& Vuoskoski, 2023).
+
+However, past research on music and prosociality has mostly investigated the individuals who are part of a shared music activity, be it as a listener or as a performer. Some notable exceptions tested prosocial effects on targets external to the music activity: Cirelli, Wan, and Trainor (2016) showed that infants who were bounced in synchrony with an experimenter were more helpful towards an external target person who did not participate in the synchrony activity, compared to infants who were bounced asynchronously, but only if the external target had demonstrated affiliation with the experimenter. In a study by Reddish, Bulbulia, and Fischer (2014), participants who had moved in synchrony were more likely to volunteer to fill out an unrewarded survey for a confederate compared to participants who had watched a video of synchronous movements, regardless of whether the confederate took part in the synchronous movement (co-performer) or not (external target). In a follow-up study, the effect of synchrony on helping even persisted regardless of whether the external target was presented as a student from the same university as the participants (extended ingroup) or from a rival university (outgroup, Reddish, Tong, Jong, Lanman, \& Whitehouse, 2016), seemingly contrasting the results of Cirelli and colleagues who found helpfulness to increase only for affiliated external targets. On the other hand, Cross, Wilson, and Golonka (2020) found no increases in cooperation after coordinated movement, neither towards strangers who observed the movement in the same room nor towards strangers who observed from a separate room, questioning to which extent prosocial effects of synchrony extend beyond the individuals who synchronize with each other.
+
+Despite the mixed evidence, music psychology provides one potential explanation for the prosocial effect of charity concerts. Assuming that the justice-seeking target person or group is perceived as affiliated with the musicians, the music-enhanced bonds between the audience and the musicians could extend to the affiliated target (colloquially put, ``your friends are my friends''), even if the target is not part of the concert. The strengthened bonds with the external target could then explain why the audience would show prosocial behaviour towards them. It is unclear to which extent this effect depends on shared presence: If the bonding between musicians and audience results from synchronized perceptions and actions, the effect might be smaller for livestream audiences whose interaction with the musicians is limited in at least two ways compared to an in-person audience: (1) Synchrony between musicians and livestream audience members can only emerge from unidirectional adjustment (only the audience member can adjust to the musician, not the other way around), and (2) the cues livestream audience members can use to synchronize are restricted to a two-dimensional video (rather than the multidimensional in-person experience). In line with this, a study of livestream concert audiences found that greater physical presence, manipulated by using a virtual reality headset, was associated with greater feelings of connectedness with the musicians (Onderdijk et al., 2021). However, other mechanisms by which music might strengthen social bonds, like imitation, are less affected by the limitations of a livestream. Another study found that in-person audiences felt more connected to other audience members, but found no difference between in-person and livestream audiences' connectedness with the musicians (Swarbrick \& Vuoskoski, 2023). Hence, it could similarly be expected that the prosocial effect extends to affiliates of the musicians in in-person and livestreamed charity concerts alike.
+
+\subsection{Morality}\label{morality}
+
+When looking beyond the study of music, social psychology offers other theoretical explanations for how prosociality emerges, which might apply in the context of charity concerts. One of the most widely spread is the theory of planned behaviour (TPB, Ajzen, 1991), which relies on principles of rationality and utility maximization to explain behaviour. The TPB identifies four variables essential to behaviour: (1) attitudes, comprising the evaluation of the behaviour itself; (2) subjective norms, the beliefs about others' opinions on the behaviour and about others' engagement in the behaviour; and (3) perceived behavioural control, referring to self-efficacy beliefs about one's ability to perform the behaviour. Attitudes, subjective norms, and perceived behavioural control predict the fourth variable, (4) behavioural intention, which in turn predicts actual behaviour (Ajzen, 1991, 2011). Separating intention and behaviour reduces noise in the analysis, because the translation of intention into behaviour can be hindered by external factors that are beyond the scope of studying motivational determinants of behaviour (e.g., lack of resources, or unexpected situations, Sheeran, 2002). Despite its focus on personal benefit, the TPB variables can explain significant variance in prosocial behaviours, like charitable giving (Smith \& McSweeney, 2007; White, Sutton, \& Zhao, 2023) and social justice engagement (Torres-Harding, Siers, \& Olson, 2012).
+
+Other studies on prosocial or pro-environmental behaviour (De Groot \& Steg, 2009; Savari, Damaneh, Damaneh, \& Cotton, 2023; Steg \& De Groot, 2010) have combined the TPB with the norm activation model (NAM, Schwartz, 1977), which focuses on morality to explain behaviour that is beneficial to both others and the self. The NAM identifies further variables that influence behaviour: (1) problem awareness, the knowledge that current conditions will cause negative consequences for someone or something; (2) ascription of responsibility, the belief that one can change the conditions to avert the negative consequences; and (3) personal norms, the conclusion that one has the moral obligation to take action. Importantly, the NAM postulates a specific sequence for these variables: First, a person has to become aware of the problem and then take on personal responsibility in order for their personal norms to activate in the situation, creating a moral obligation to help solve the problem (De Groot \& Steg, 2009). Thus, awareness is a prerequisite for the other NAM variables. Awareness can also be expected to precede the TPB variables, since awareness is required to form an attitude about an issue, consider others' opinions on it, and find one's own role in solving it.
+
+Although the literature is sparse, some research shows that music can influence NAM-TPB variables to inspire prosocial or pro-environmental behaviour. For example, music can activate personal norms by emphasizing the salience of relevant values, increase perceived behavioural control by empowering individuals, and leverage social norms by creating group membership (for a review, see Prior, 2022). However, seeing that awareness is thought to be a prerequisite in the NAM-TPB, effective advocacy would first need to establish an awareness of the issue that is advocated for, especially when this issue is lesser known. If charity concerts can raise problem awareness by communicating a social justice issue to the audience, then the heightened awareness could explain why audience members choose to engage with the issue.
+
+\subsection{Empathy}\label{empathy}
+
+Alternatively to the rational framing of the NAM-TPB, another social psychological explanation of prosociality focuses on altruistic motives. The empathy-altruism hypothesis (Batson, 1987) posits that empathically adopting the perspective of someone who suffers motivates prosocial behaviour to reduce their suffering. According to this hypothesis, empathic concern is central to shifting the focus from the behavioural consequences for oneself to the consequences for the person in need, which gives rise to a truly selfless motivation to help. Opponents of this hypothesis have argued that helping always has egoistic motives. One argument is that seeing another person suffering creates feelings of personal distress. Even in the absence of external rewards for helping the suffering person (e.g., receiving praise, status, or a favour in return), helping could still be motivated by the prospect of relieving one's own distress at the sight of the suffering (Batson, 2011; Cialdini, Brown, Lewis, Luce, \& Neuberg, 1997). The distinction between empathic concern and personal distress is a fine-grained one: Both are evoked by witnessing someone suffer, and both lead to the same helping behaviour; they merely differentiate the motivation to help. Both, however, fall under the umbrella of empathy (Batson, 2011).
+
+Different views exist on how music might increase empathy (Clarke et al., 2015). One framework emphasizes that coordinating with someone else to make music together relies on similar underlying mechanisms as taking someone else's perspective to understand how they feel (Rabinowitch, 2023; Rabinowitch, Cross, \& Burnard, 2013). Shared music-making involves components such as motor resonance, imitation, and entrainment, which induce a state of shared intentionality and intersubjectivity among the performers. This shared state involves an understanding of others' intentions and a shared attentional focus, which not only facilitate musical coordination, but also empathic perspective taking (Rabinowitch et al., 2013). Note that the aspects of the music that are thought to evoke prosocial effects are similar to the ones discussed in section \ref{music-bonding}, but here the mediating factor for the prosocial effects of music is thought to be empathy, rather than social bonding. The empathy benefits of making music together can generalize beyond the co-performers to non-musical contexts: In a study with primary school children, a one-year group music-making intervention increased empathy compared to the pretest and compared to control groups playing group games or being inactive. The authors interpret this result as evidence that musical interactions train general empathy skills (Rabinowitch et al., 2013). However, it is unclear to which extent shared intentionality and intersubjectivity can arise from listening to, rather than making music, and specifically from listening to a livestream without sharing the physical presence of the musicians.
+
+Alternatively, prosocial lyrics can provide a social learning opportunity for the listener, influencing social cognition (attitudes) and social affect (empathy). Attitudes and empathy, in turn, influence how an individual interprets social interactions, thus facilitating prosocial behaviour. A series of studies showed that listening to songs with prosocial, compared to neutral, lyrics increases empathy and donation behaviour, and that the effect on behaviour is mediated by empathy (Greitemeyer, 2009a, 2009b). The effect of prosocial lyrics also replicated in a more ecologically valid field study, where playing songs with prosocial, compared to neutral, lyrics in a coffee shop increased the purchase of fair trade coffee (Ruth, 2017). However, a longitudinal study found no effect of preferences for prosocial music on prosocial behaviour, even though they found that preferences for aggression in music decreased prosocial behaviour (Coyne \& Padilla-Walker, 2015).
+
+Taken together, empathy provides another potential explanation for the advocacy of charity concerts: If charity concerts can increase audience members' empathic concern for the target person or group affected by a social justice issue, the heightened empathic concern would create a motivation to help. Empathy arising from motor resonance, imitation, and entrainment might be lower among livestream audiences who unidirectionally interact with the musicians without sharing their physical presence. On the other hand, empathy arising from prosocial learning has been demonstrated even for passive exposure to prosocial songs. In summary, the theoretical perspectives from social psychology suggest that music can foster prosociality through information-based or emotion-based appeals, but the conditions and relationships require further systematic investigation.
+
+\subsection{Research Question}\label{research-question}
+
+Integrating research on prosociality from social and music psychology, the current study investigated how a music performance engages its audience with a social justice issue, and what role information and social co-presence play. Percussionists Allen Otte and John Lane performed their advocacy piece \textit{The Innocents}, in which they address wrongful incarceration and the fate of exonerees, for in-person and livestream audiences. As a comparison, we screened Wojciech Lorenc's eponymous documentary film, which explains the creative process and the intentions behind the \textit{Innocents} performance. We tested the following hypotheses (see Figure \ref{fig:hypotheses}):
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/Innocents_Diagram_Hypotheses_v2} \caption{Schematic diagram of the hypothesized variables leading from attending the charity event to engaging in charitable behaviour.}\label{fig:hypotheses}
+\end{figure}
+
+Music has been shown to increase bonding and empathy, but it is unclear to which extent the prosocial effect for external targets depends on shared presence (Clarke et al., 2015; Onderdijk et al., 2021). Therefore, we expect: \emph{If shared presence drives the prosocial effect of music, then the performance will show larger increases in bonding (H1) and empathy (H2) for in-person audiences, and in-person audiences will perform more charitable behaviours, compared to livestream audiences.}
+
+Documentary films are an established medium to increase concern and awareness about specific issues (Howell, 2011; Nolan, 2010; Sakellari, 2015), whereas musical meaning is often more ambiguous. Therefore, we expect: \emph{If concrete information is relevant for the effect of media on prosociality, then the film will increase awareness of wrongful imprisonment more than the performance (H3).}
+
+Outside of the musical context, social bonds, empathic concern, and problem awareness have all been hypothesized to elicit prosocial behaviour (Batson, 1987; Batson et al., 2015; Schwartz, 1977). Therefore, we expect: \emph{Bonding (H4a), empathy (H4b), and awareness (H4c) will predict prosocial behavioural intentions, which will in turn predict charitable behaviour (H5).}
+
+\section{Methods}\label{methods}
+
+To address the research questions, we organized public events on April 2nd and 4th, 2024. Both events featured a live performance of \textit{The Innocents} by percussionists Allen Otte and John Lane and a screening of the accompanying documentary film by Wojciech Lorenc, in counterbalanced order. The events could be attended either in-person or in an online livestream. Participation in the research study was optional for audience members, thus the events were attended by research participants and regular ticket holders alike.
+
+\subsection{Procedure}\label{procedure}
+
+Leading up to the event, all ticket holders were invited to sign up for participation in the research study via email. After giving informed consent, they filled out a pre-survey in their web browser, which assessed baseline measures of the outcome variables: interpersonal closeness with the musicians John Lane and Allen Otte and the wrongfully-imprisoned and exonerated Anna Vasquez; state empathy for Anna Vasquez's story; and the full NAM-TPB for engagement with wrongful imprisonment. Moreover, the pre-survey included person-level covariates. For a description of the measures, see section \ref{measures}. The number of advance sign-ups did not reach the targeted sample size on either day, so we recruited impromptu participants on the day of the event. Additional in-person participants were recruited among the in-person ticket holders as they arrived at the venue, and additional livestream participants were recruited through Prolific. These impromptu participants filled out the baseline measures from the pre-survey before the start of the event and the person-level covariates after the event, to save time. However, five impromptu participants had to leave after the event, so their covariate measures are incomplete or missing.
+
+The events took place in McMaster University's Large Interactive Virtual Environment laboratory (LIVELab, \url{https://livelab.mcmaster.ca/}), a concert venue equipped for psychological research, and were livestreamed on YouTube. On the day of the event, participants filled out the baseline measures of affect and interpersonal closeness with the audience, which were specific to the time of the event and could therefore not be assessed in the pre-survey. Participants then saw the \textit{Innocents} film (April 2nd) or the live performance (April 4th) in the first half, and, after a 30-minute intermission, the other medium in the second half. After both the film and the performance, participants rated their subjective experience and answered the same questions already assessed at baseline regarding their interpersonal closeness, state empathy for Anna Vasquez's story, and problem awareness and behavioural intentions for engagement with wrongful imprisonment from the NAM-TPB. At the end of the event, the remaining NAM-TPB variables were administered. The end surveys additionally included some questions that were used to answer other research questions and that are described in other publications from this project (e.g., Saxena et al., 2025, others forthcoming). At the end of the event, we observed actual social justice behaviour in support of \textit{Innocence Canada}, an organization that advocates for innocent prisoners in Canada. For an overview of the experimental design, see Figure \ref{fig:study-design}. The study was approved by the McMaster Research Ethics Board (MREB\#1975).
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{images/Innocents_Diagram_StudyDesign} \caption{Schematic diagram of the study procedure. Pen and paper icons indicate the time points at which the participants completed the surveys. The experimental design is mixed: All participants experienced both media (film and performance), whereas attendance mode (livestream vs.~in-person) and order (film first, or performance first) were between-subjects factors. The upper row (Group 1) shows the sample composition and order of the media on April 2nd, and the lower row (Group 2) the sample and order on April 4th, 2024.}\label{fig:study-design}
+\end{figure}
+
+\subsection{Implementation}\label{implementation}
+
+\subsubsection{Surveys}\label{surveys}
+
+All surveys were coded in jsPsych (Leeuw, Gilbert, \& Luchterhandt, 2023) and hosted through JATOS (Lange, Kühn, \& Filevich, 2015) on our lab server located at McMaster University, and managed by McMaster's Research and High Performance Computing Support. Codebooks and print versions are available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis/surveys}. All participants completed the survey via web browser: In-person participants were provided with LIVELab's Samsung Galaxy Tab A 8.0 SM-T380 tablets, which they could store in a pouch attached to their seat during the event. Livestream participants used their own machines. Since this was a live event, participants had limited time to fill out the surveys before the event and at intermission so as not to delay the performance and the film screening. To ensure that participants progressed through the surveys as planned, we monitored the incoming data using the JATOS logs. If participants did not complete the surveys in the designated time, we skipped the remaining questions so that the surveys would not distract participants from the event. For in-person participants, research assistants went up to their seats and manually skipped the remaining survey questions, whereas for livestream participants, we signaled the JATOS server to move every participant to the livestream once the first and second half of the event began, respectively.
+
+\subsubsection{Physiological measures}\label{physiological-measures}
+
+Both in-person and online participants consented to eye-tracking and cardiac monitoring. In-person participants were equipped with Bangle.js 2 watches, running our lab's custom software (Flannery \& Fink, 2024), and with Pupil Labs' NEON eye-tracking glasses, controlled via our lab's custom, multi-person mobile eye-tracking system (Saxena et al., 2025). Livestream participants' eye movements (Saxena, Fink, \& Lange, 2023) and cardiac activity (Boccignone et al., 2022) were recorded via webcam. These measures were used to answer other research questions and will be reported in forthcoming publications from this project.
+
+\subsubsection{Environment}\label{environment}
+
+The LIVELab is equipped with technology that meets the demands of concert halls as well as psychological laboratories. It has a capacity of 106 seats. For this study, in-person participants were seated in the second, third and fourth front rows. Including participants, the event was attended by 55 in-person audience members on April 2nd and 60 audience members on April 4th. The performance took place on the stage, where the sound was recorded by eight microphones for the different instruments and two microphones for the audience (e.g., to capture applause), and presented over a PA system consisting of two Meyer 500HP subwoofers and 5 Meyer UPJ-1P speakers. For the livestream, the performance was filmed from a static PTZOptics pt30x-sdi-g2 camera positioned behind and above the audience seating to capture an unobstructed view of the stage. The livestream audio was the same mix presented in the concert hall. The film was screened for the in-person audience on a 384.5 cm x 216 cm Samsung LH015IER LED video wall, using the same PA sound system. The film video and audio were streamed directly to YouTube. While the general public was free to watch the livestream on YouTube, livestream participants were given a link to a private website which presented the surveys and the YouTube stream together. This gave us added control over the participant experience, as the custom website prohibited access to stream controls (like pausing the stream) and the chat function of YouTube. Livestream participants were instructed to sit in a quiet environment and use headphones for the best experience, but 9 livestream participants self-reported that they still used the built-in speakers of their machine. Nonetheless, the sound quality was rated as very good (\(M = 6.57\) on a 7-point scale), as was the video quality (\(M = 6.48\)), the video fluency (\(M = 6.38\)), and the camera framing (\(M = 6.00\)).
+
+\subsection{Stimuli}\label{stimuli}
+
+\textit{The Innocents} (Lane \& Otte, 2006) is a 1-hour contemporary percussion performance about wrongful imprisonment. In a series of 17 tableaux, the performance explores issues of the US-American criminal justice system, such as mistaken identity, interrogation malpractices, and forced prison labor. Associated objects, like keys and newspapers, are utilized to create a diverse soundscape ranging from conventional song to experimental noise. In some tableaux, the musicians speak or sing text fragments on truth, justice, and freedom, while others feature field recordings of demonstrations, interrogations, or police radio. \textit{The Innocents} is intended to motivate audiences to engage with the topic of wrongful imprisonment, which is achieved by means of an emotional and experiential immersion, all while remaining artistically abstract (Lane \& Otte, 2021). A full recording of the performance from April 4th, 2024 is available on YouTube, which is exactly what livestream participants saw on that day: \url{https://www.youtube.com/watch?v=sQW0a3NlQUo&ab_channel=BEATLab}.
+
+Director Wojciech Lorenc created an eponymous documentary film about \textit{The Innocents} (Lorenc, 2022). Over 80 minutes, the film features conversations between the musicians Lane and Otte about their creative process and personal rapport with the issue of wrongful imprisonment, and recordings of their rehearsals and interactions with audiences on tour. A third protagonist of the film is Anna Vasquez, who shares her personal story of being convicted for a crime she did not commit, and her thoughts and feelings about the \textit{Innocents} performance. The film's score includes excerpts from the performance. Compared to the performance, the film has a more definite narrative and educates through first-person accounts, and unambiguous words and images. A trailer for the film is available on YouTube: \url{https://www.youtube.com/watch?v=PyYSohg-FpI&ab_channel=WojciechLorenc}.
+
+\subsection{Participants}\label{participants}
+
+Participants had to be 16 years or older, have normal vision and hearing, and have not seen the \textit{Innocents} film or performance before. By buying their ticket for a specific date and attendance mode, participants self-assigned to a condition. However, they were blind to the order of film and performance on their event day, as this information was never advertised. We aimed for 30 participants per day and attendance mode (limited by the available number of physiological sensors for in-person participants), but we were unable to recruit the targeted livestream sample size until the start of the event. A total of 84 participants completed the study across both days (day 1: \(n\) = 39, day 2: \(n\) = 45) and both attendance modes (in-person: \(n\) = 61, livestream: \(n\) = 23). One additional in-person participant and 9 livestream participants left the event at intermission, but are included in all analyses for which their data are available. Livestream participants were watching from four different continents (Africa, Europe, North America, Asia, in descending order of frequency), and New Zealand, with most participants watching from South Africa (\(n = 12\)), Mexico (\(n = 6\)), and Portugal (\(n = 6\)). The characteristics of the sample are described in detail in Tables \ref{tab:cont-sample-description} and \ref{tab:cat-sample-description}. Regular participants received 10 CAD compensation; those who participated through Prolific were compensated 18 GBP.
+
+
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:cont-sample-description}Description of the continuous covariates (mean, standard deviation in parenthesis) across the sample, split by order and attendance mode.}
+
+\begin{tabular}{lrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Film-Performance} & \multicolumn{2}{c}{Performance-Film}  &\\
+\cmidrule(r){2-3} \cmidrule(r){4-5}
+Variable & \multicolumn{1}{c}{In-person} & \multicolumn{1}{c}{Live-stream} & \multicolumn{1}{c}{In-person} & \multicolumn{1}{c}{Livestream} & \multicolumn{1}{c}{Total}\\
+\midrule
+N & 31 & 17 & 31 & 15 & 94\\
+Age in years & 36.29 (17.54) & 30.29 (10.65) & 33.21 (15.27) & 30.85 (10.95) & 33.38 (14.81)\\
+range & 19 - 82 & 21 - 55 & 16 - 72 & 21 - 56 & 16 - 82\\
+Income$^a$ & 2.35 (1.69) & 2.25 (1) & 3.6 (1.91) & 2.15 (1.07) & 2.72 (1.66)\\
+Education$^b$ & 4.33 (1.82) & 4.47 (1.28) & 4.72 (1.93) & 4.27 (1.67) & 4.48 (1.72)\\
+Political Spectrum$^c$ & 5.25 (1.14) & 4.47 (1.66) & 5.07 (1.07) & 5.13 (1.13) & 5.02 (1.25)\\
+Musicianship$^d$ & 2.86 (1.3) & 2.35 (1.11) & 3.03 (1.45) & 2.6 (0.74) & 2.78 (1.25)\\
+Familiarity$^e$ & 2.48 (1.96) & 2.94 (1.95) & 2.93 (1.6) & 2.53 (1.46) & 2.72 (1.76)\\
+Liking$^e$ & 4.81 (1.47) & 4.23 (1.54) & 4.25 (1.41) & 4.33 (1.56) & 4.41 (1.46)\\
+Openness$^f$ & 3.03 (0.51) & 3.4 (0.46) & 3.12 (0.4) & 3.3 (0.64) & 3.18 (0.5)\\
+Empathic Concern$^f$ & 4.11 (0.59) & 3.97 (0.56) & 3.92 (0.59) & 3.93 (0.57) & 3.99 (0.58)\\
+Personal Distress$^f$ & 2.63 (0.78) & 2.85 (0.63) & 2.75 (0.66) & 2.86 (0.76) & 2.75 (0.71)\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} $^a$monthly; ranging from 1 (below \$1,000) to 6 (\$5,000 and above). $^b$ranging from 1 (no high school diploma) to 7 (doctorate degree). $^c$ranging from 1 (extremely conservative) to 7 (extremely liberal). $^d$ranging from 1 (nonmusician) to 6 (professional musician). $^e$Familiarity and liking of contemporary percussion music: ranging from 1 (very unfamiliar/strongly dislike) to 7 (very familiar/strongly like). $^f$Personality traits: ranging from 1 (disagree strongly/does not describe me well) to 5 (agree strongly/describes me very well).}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:cat-sample-description}Description of the categorical covariates (number, percentage in parenthesis) across the sample, split by order and attendance mode.}
+
+\begin{tabular}{lrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Film-Performance} & \multicolumn{2}{c}{Performance-Film}  &\\
+\cmidrule(r){2-3} \cmidrule(r){4-5}
+Variable & \multicolumn{1}{c}{In-person} & \multicolumn{1}{c}{Live-stream} & \multicolumn{1}{c}{Inperson} & \multicolumn{1}{c}{Livestream} & \multicolumn{1}{c}{Total}\\
+\midrule
+N & 31 & 17 & 31 & 15 & 94\\
+Identity &  &  &  &  & \\
+\ \  Woman & 18 (58\%) & 6 (35\%) & 20 (65\%) & 8 (53\%) & 52 (55\%)\\
+\ \  Genderdiverse & 4 (13\%) & 1 (6\%) & 1 (3\%) & 2 (13\%) & 8 (9\%)\\
+\ \  LGBQ+ & 10 (32\%) & 1 (6\%) & 6 (19\%) & 5 (33\%) & 22 (23\%)\\
+\ \  Person of Colour & 6 (19\%) & 7 (41\%) & 2 (6\%) & 4 (27\%) & 19 (20\%)\\
+\ \  Indigenous & 0 (0\%) & 1 (6\%) & 0 (0\%) & 1 (7\%) & 2 (2\%)\\
+\ \  None of the above & 3 (10\%) & 5 (29\%) & 6 (19\%) & 4 (27\%) & 18 (19\%)\\
+Lived Experience &  &  &  &  & \\
+\ \  Disability & 5 (16\%) & 2 (12\%) & 3 (10\%) & 3 (20\%) & 13 (14\%)\\
+\ \  Criminal charges & 1 (3\%) & 0 (0\%) & 1 (3\%) & 0 (0\%) & 2 (2\%)\\
+\ \  Unshelteredness & 0 (0\%) & 1 (6\%) & 0 (0\%) & 0 (0\%) & 1 (1\%)\\
+\ \  None of the above & 21 (68\%) & 14 (82\%) & 26 (84\%) & 10 (67\%) & 71 (76\%)\\
+Attendance Motivation &  &  &  &  & \\
+\ \  Curiosity & 17 (55\%) & 6 (35\%) & 13 (42\%) & 4 (27\%) & 40 (43\%)\\
+\ \  Interest & 10 (32\%) & 2 (12\%) & 3 (10\%) & 6 (40\%) & 21 (22\%)\\
+\ \  Enjoyment & 14 (45\%) & 1 (6\%) & 8 (26\%) & 1 (7\%) & 24 (26\%)\\
+\ \  Support the cause & 10 (32\%) & 6 (35\%) & 7 (23\%) & 5 (33\%) & 28 (30\%)\\
+\ \  Support the research & 27 (87\%) & 12 (71\%) & 22 (71\%) & 9 (60\%) & 70 (74\%)\\
+Relationship to Researchers &  &  &  &  & \\
+\ \  Relative or friend & 14 (45\%) & 0 (0\%) & 18 (58\%) & 2 (13\%) & 34 (36\%)\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\subsection{Measures}\label{measures}
+
+\subsubsection{Subjective experience}\label{subjective-experience}
+
+Before the event and after the film and the performance, we assessed participants' affect with six items rated on a 4-point scale ranging from 1 (``I do not feel it'') to 4 (``I feel it strongly''). The six items were combined into three bipolar dimensions alert-tired, relaxed-tense, and positive-negative by subtracting the rating of one pole from the rating of the opposite pole (Schimmack \& Grob, 2000). We asked participants to rate their experience of the film and the performance along eight items: enjoyment, interest, being moved, gaining insight, being attentive, experiencing chills or shivers, tearing up or crying, and likelihood of reengaging with a similar event (cf. Fink, Fiehn, \& Wald-Fuhrmann, 2024; Schindler et al., 2017; Swarbrick \& Vuoskoski, 2023). These items were rated on a 7-point scale ranging from 1 (``not at all'') to 7 (``extremely''). Furthermore, we assessed the perceived duration on a 7-point scale from -3 (``much too short'') to 3 (``much too long'') with 0 being ``about right''. For the performance only, we asked participants to describe the performance in up to ten of their own words. At the end of the event, we also asked participants whether they liked the order of film and performance that they saw.
+
+\subsubsection{Predictors of prosociality}\label{predictors-of-prosociality}
+
+We measured interpersonal closeness with the Inclusion of the Other in the Self scale (Aron, Aron, \& Smollan, 1992), a 7-point scale with pictorial anchors that show increasingly overlapping Venn diagrams with two circles labelled ``self'' and ``other''. Participants were instructed to rate which of the paired circles best described their relationship with the ``other''. Closeness was assessed separately for the musicians Allen Otte and John Lane, the wrongfully imprisoned and exonerated Anna Vasquez, the in-person and the livestream audience.
+
+To measure state empathy, participants read a vignette about the story of Anna Vasquez's wrongful imprisonment. We then administered the Empathic Concern Index (Batson, 1987) that requires participants to rate the intensity of 14 emotional reactions on a 7-point scale ranging from 1 (``not at all'') to 7 (``extremely''). The items are averaged to obtain two indices, empathic concern (\(\alpha = 0.89\)) and personal distress (\(\alpha = 0.91\)).
+
+Lastly, we consulted a range of previous studies using the norm activation model and the theory of planned behaviour for prosocial behaviour such as social justice engagement (Torres-Harding et al., 2012), charitable giving (Smith \& McSweeney, 2007), and pro-environmental behaviour (Savari et al., 2023; Steg \& De Groot, 2010). Based on the surveys used in these studies, we created an instrument to measure the NAM-TPB constructs for engagement with wrongful imprisonment. The instrument consists of four items for each of the NAM constructs problem awareness (e.g., ``Wrongful incarcerations are an urgent problem in our society''; \(\alpha = 0.59\)), ascription of responsibility (e.g., ``Everyone must do something against social injustices in the legal system''; \(\alpha = 0.79\)), and personal norm (e.g., ``I would feel guilty if I didn't do something to make the criminal justice system more fair''; \(\alpha = 0.78\)). In addition, we created four items each for the TPB constructs attitude (e.g., ``I believe that it is essential to make sure that defendants and convicts receive adequate legal support''; \(\alpha = 0.73\)), subjective norm (e.g., ``Other people around me support organizations and groups that fight injustices in the legal system''; \(\alpha = 0.72\)), and perceived behavioural control (e.g., ``I believe that I have the power to advocate for social justice in the legal system, if I choose to do so''; \(\alpha = 0.29\)). To measure behavioural intentions to engage with wrongful imprisonment, we created three items relating to \textit{Innocence Canada}, an organization that advocates for innocent prisoners in Canada: ``I intend to join the mailing list of an organization like \textit{Innocence Canada}'', ``I intend to read up on wrongful incarceration'', and ``I intend to donate to an organization like \textit{Innocence Canada}'' (\(\alpha = 0.82\)). All NAM-TPB items were rated on a 7-point scale ranging from 1 (``strongly disagree'') to 7 (``strongly agree'') and averaged within each construct.
+
+To measure social justice behaviour at the end of the event, we observed whether participants took a flyer of \textit{Innocence Canada} (in-person: paper flyer; livestream: digital download), and whether they signed up for their mailing list. We also provided opportunities to donate to \textit{Innocence Canada} (in-person: donation box; livestream: donation link). Because we were ethically not allowed to observe donations directly, we followed up with participants one to two weeks after the event to ask whether and how much they had donated. Note that the \textit{Innocents} performance and film were created in the USA, informed by and referring to issues of wrongful incarceration in the US-American criminal justice system. On the other hand, this event took place in Canada. Nonetheless, both countries face issues related to wrongful incarceration, and most if not all of the message of \textit{Innocents} is equally relevant in Canada. Audiences' support for Innocence Canada, therefore, further illustrates the advocacy's ability to transfer to a new (local) context.
+
+\subsubsection{Control variables}\label{control-variables}
+
+In the pre-survey, we also asked participants their age, income, education, and political orientation. Furthermore, based on the Wheel of Power/Privilege (Bauer, 2021; Canadian Council for Refugees, n.d.; Duckworth, 2020), we asked participants whether they feel part of equity-deserving groups (Women, genderdiverse, LGBQ+, Indigenous Peoples, and Persons of colour) and inquired about their lived experiences (of disability, justice-involvement, and unshelteredness). We assessed participants' musical background with one item from the Ollen Musical Sophistication Index (Ollen, 2006; Zhang \& Schubert, 2019). Moreover, we asked for participants' familiarity with and preference for contemporary percussion music, on scales ranging from 1 (``very unfamiliar''/``strongly dislike'') to 7 (``very familiar''/``strongly like''). We also asked for their motivations to attend the event, and whether they had a personal relationship to the researchers or the artists. Finally, we measured relevant personality traits: Openness to experience with the six-item facet of the Big Five Inventory-2-Short (Soto \& John, 2017), and trait empathy with 14 items making up the empathic concern and personal distress facets of the Interpersonal Reactivity Index (Davis, 1980).
+
+\subsection{Data Analysis}\label{data-analysis}
+
+\subsubsection{Pre-processing}\label{pre-processing}
+
+Only participants who had watched and evaluated at least the first half of the event were included in the analyses, including participants who had not completed the entire pre-event survey. We checked for rushing within questionnaires (pre-survey, intermission survey, post-event survey), but no participant was faster than our cutoff criterion of 1.5 times the interquartile range of the completion times. We further checked response patterns within measures and found that some participants demonstrated zero variance in the multi-item measures. For participants with zero variance in one measure, that measure was treated as ``missing'' (11 cases, 0.82\%) . The resulting sample size for each analysis is reported alongside the results.
+
+\subsubsection{Statistical modeling}\label{statistical-modeling}
+
+For each of the potential drivers of prosociality (closeness, emphatic concern, and problem awareness), we used linear mixed models (LMMs) to test the effect of the event on the outcome. Sum-to-Zero contrasts tested whether the outcomes were higher for in-person compared to livestream attendance, after watching the performance compared to after the film, and at the end of the event compared to at intermission. We added the baseline rating of the respective outcome as a covariate, estimating a fixed effect for the entire sample to account for measured variances in the outcome prior to the event. We also added random intercepts for each participant to account for unmeasured variances and capture intra-participant correlations due to the repeated measures design. The outcomes and baseline covariates were z-scored. Missing values for the baseline covariate were imputed with zero (the mean value after z-scoring). We tested whether any control variables had a sizable correlation with the outcome variables (\(r \geq .30\)), to potentially include them as covariates in the models, but found no correlations reaching that threshold. All models met the assumptions of normally distributed residuals and random intercepts, homogeneity of variances, and did not have multicollinearity issues, unless reported otherwise. The model fit was evaluated against a covariate model predicting the outcome from only the baseline and the random intercept using a Likelihood Ratio Test of the maximum likelihood (ML)-generated models. Main and interaction effects were evaluated using the t-statistic of the parameter estimates and Satterthwaite approximations for degrees of freedom of the restricted maximum likelihood (REML)-generated models, as recommended by Meteyard and Davies (2020). Cohen's \(d\) as effect size measure for the fixed effects was calculated using the equation by Westfall, Kenny, and Judd (2014; see Brysbaert and Stevens, 2018), and interpreted according to the norms by Cohen (1992). Significant interactions were decomposed using one-sided paired t-tests.
+
+To test the influence of closeness, empathic concern, problem awareness, and behavioural intention on observed behaviour, we used ordinal logistic regression to predict the number of behaviours participants performed. Again, we tested for control variables with a sizable correlation with the behaviour sum score, but did not find any that reached the threshold (\(r \geq .30\)). All predictors were z-scored. Model fit was evaluated using a Likelihood Ratio Test. Predictors were interpreted as having a significant effect if the 95\% confidence interval of the Odd's Ratio (calculated as \((Coefficient \pm 1.96*Standard Error)^2\)) did not cross 1.
+
+\subsubsection{Software}\label{software}
+
+All analyses were performed in R 4.4.1 (R Core Team, 2024), using custom scripts and third-party packages. Data and the code required to reproduce everything in this document (created with \emph{papaja}, Aust \& Barth, 2023) is available at \url{https://github.com/beatlab-mcmaster/Schlichting_MSc_Thesis}. Required packages are detailed in the document source code, and below, alongside the relevant analysis. All figures are created with \emph{ggplot2} (Wickham, 2016), \emph{ggpubr} (Kassambara, 2023), and \emph{png} (Urbanek, 2022) unless stated otherwise. Error bars represent 95\% confidence intervals (CI) based on 1000 bootstrap resamples implemented in \emph{Hmisc} (Harrell Jr, 2024).
+
+\section{Results}\label{results}
+
+First, we present descriptive statistics of audiences' subjective experience of the event, before testing the hypothesized relationships between bonding, empathy, awareness, and charitable behaviour using LMMs and regressions.
+
+\subsection{Subjective Experience}\label{subjective-experience-1}
+
+We assessed participants' affect along three bipolar dimensions. Throughout the event, participants' positivity, relaxation, and alertness tended to decrease (see Figure \ref{fig:affect-changeplots}). For in-person participants, the performance that was shown after the film (purple bars) led to the smallest decreases in all three affect dimensions. For livestream participants, in contrast, the performance that was shown after the film led to the largest decreases in relaxation and alertness, but livestream participants were generally less impacted in their positivity than in-person participants. Note that regardless of the negative change, averaged across all three time points participants tended to feel more positive than negative (\(M = 1.06\), \(SD = 1.44\)), and more relaxed than tense (\(M = 0.62\), \(SD = 1.38\)), but more tired than alert (\(M = -0.10\), \(SD = 1.56\)).
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1} \caption{Mean and CI of change in affect dimensions compared to baseline. Bar colour indicates order and medium. The plots are split for in-person (left) and livestream (right) attendance.}\label{fig:affect-changeplots}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf}
+\caption{\label{fig:engagement-plots}A: Mean and CI of engagement items, with bar colours indicating order and medium. Ratings range from 1 (not at all) to 7 (extremely), except for Duration which ranges from -3 (much too long) to +3 (much too short). Note that this plot is pooled over livestream and in-person attendance. B: Comparison of engagement factor score by order and medium, split for in-person (left) and livestream (right) attendance. Probability density functions show the shape of the factor score distribution for each condition, with the condition mean indicated by white lines, and individual datapoints represented by small black lines.}
+\end{figure}
+
+Despite the decreases in positivity, relaxation, and alertness, participants rated the film and performance highly on most of the positively connoted experience scales. For most items, the ratings were highest for the performance that was seen after the film (purple bars in Figure \ref{fig:engagement-plots} A). The experience items were intercorrelated, so we applied an exploratory factor analysis (using \emph{psych}, William Revelle, 2024), resulting in one factor extracted with the generalized least squares method which explained 49\% of variance in the experience items.. Based on the highest-loading items (enjoyment: \(0.87\); interest: \(0.82\); willingness to reengage: \(0.82\)), we called the factor ``engagement''. Comparing the factor score of engagement between attendance modes revealed that engagement ratings were in a similar range for in-person and livestream audiences. Thus, the event was no less engaging for livestream audiences at home than for those present in the concert hall. Similar to the pattern observed among the individual items, the engagement factor score was highest for the performance that was contextualized by the film (see Figure \ref{fig:engagement-plots} B). This advantage of the contextualized performance is in line with participants' explicit preferences regarding the order of the media: Among the participants who saw the performance after the film, 32 (84.2\%) stated that they preferred the order they saw and 4 (10.5\%) thought the order did not matter for their experience. In comparison, 28 (62.2\%) of participants who saw the performance before the film preferred the order they saw and 4 (8.9\%) thought it did not matter.
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf}
+\caption{\label{fig:wordcloud-comparison}Comparison wordcloud of performance descriptions with and without context of the film. Purple words (top) were more frequently used to describe the performance that had the context of the film, and blue words (bottom) were more frequently used to describe the performance that did not have the context. Font size represents the difference in word frequency between conditions, with larger words indicating greater differences. Only words that differed by at least two mentions are shown. Figure created with \emph{wordcloud} (Fellows, 2018).}
+\end{figure}
+
+For a more qualitative understanding of how participants experienced the performance, we asked them to describe the performance in up to ten words. Overall, we collected 614 words. On average, livestream participants provided more words (\(M = 8.41\), \(SD = 2.24\)), than in-person participants (\(M = 7.03\), \(SD = 2.84\)). Participants who saw the performance first provided more words (\(M = 8.11\), \(SD = 2.27\)) than those who saw the performance after the film (\(M = 6.55\), \(SD = 3.05\)). Interestingly, participants who had the context of having watched the film first described the performance more in terms of its advocacy content (using words like ``powerful'', ``eye-opening'', and ``justice''), whereas participants who saw the performance first, without context, described it more in terms of its musical composition (using words like ``repetitive'', ``different'', and ``loud''; see Figure \ref{fig:wordcloud-comparison}. This suggests that the context of the film not only made the performance more engaging (at least for in-person participants), but also increased the salience of the music advocacy, or at least of the language used to describe music advocacy.
+
+\subsection{Changes in Predictors of Prosociality}\label{changes-in-predictors-of-prosociality}
+
+We evaluated increases in the three outcomes: \emph{closeness} with the wrongfully imprisoned Anna Vasquez, \emph{empathy} for her fate, and \emph{awareness} of wrongful imprisonment, throughout the event. For each outcome, we fit a linear mixed model to predict the outcome with the formula \(Outcome \sim Baseline Outcome + Attendance * Medium * Time + (1|Participant)\) using \emph{lmerTest} (Kuznetsova, Brockhoff, \& Christensen, 2017). For all three outcomes, the baseline significantly predicted the outcome, but the data were significantly more likely under the full model including the design factors, compared to a model with just the baseline covariate and the random intercept. Table \ref{tab:model-comp} lists the detailed results of the model comparisons.
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:model-comp}Model comparison results for the three outcomes.}
+
+\begin{tabular}{ll}
+\toprule
+Model/Test & \multicolumn{1}{c}{Formula/Statistic}\\
+\midrule
+Closeness$^a$ & $N_{observations} = 177$; $N_{participants} = 94$\\
+Base Model & Closeness \textasciitilde Baseline + (1|Participant)\\
+Full Model & Closeness \textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)\\
+LRT Test & $\chi^2 (7) = 30.94$, $p < .001$\\
+ & \\
+Empathy$^b$ & $N_{observations} = 174$; $N_{participants} = 93$\\
+Base Model & Empathy \textasciitilde Baseline + (1|Participant)\\
+Full Model & Empathy \textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)\\
+LRT Test & $\chi^2 (7) = 44.86$, $p < .001$\\
+ & \\
+Awareness$^b$ & $N_{observations} = 169$; $N_{participants} = 91$\\
+Base Model & Awareness \textasciitilde Baseline + (1|Participant)\\
+Full Model & Awareness \textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)\\
+LRT Test & $\chi^2 (7) = 17.89$, $p = 0.012$\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Base Model - Baseline covariate Model. LRT Test - Likelihood Ratio Test. $^a$The model violated the assumption of normally distributed random intercepts, but neither log-transformation nor exclusions could restore normality. $^b$Two observations with extreme residuals were excluded to preserve the assumptions of normally distributed residuals and/or random intercepts.}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+\subsubsection{Closeness}\label{closeness}
+
+Throughout the event, closeness with Anna Vasquez increased on average by \(M = 1.47\) (\(SD = 1.81\)) scale points (see Figure \ref{fig:closeness-plots} A). The variance in closeness explained by the baseline alone (in the baseline model) amounted to \(R_{marginal}^2 = 0.13\). Adding attendance, medium, and time increased the variance explained by the fixed effects (including the baseline) to \(R_{marginal}^2 = 0.20\). The random intercept variance was \(\sigma = 0.60\), summing to a total explained variance of \(R_{conditional}^2 = 0.78\).
+
+Among the fixed effects, medium had a significant small effect on closeness, \(\beta = -0.11\), \(t (84) = -2.75\), \(p = 0.007\), \(d = 0.25\), with lower closeness ratings after the performance than after the film. Time also had a small effect, \(\beta = 0.13\), \(t (84) = 3.12\), \(p = 0.002\), \(d = 0.29\), with higher ratings at the end of the event than at intermission. Importantly, medium and time interacted moderately, \(\beta = 0.22\), \(t (92) = 2.36\), \(p = 0.021\), \(d = 0.49\). Decomposing the interaction revealed that in the first half of the event, watching the film by itself afforded a large increase in closeness, \(M_D = 1.64\), 95\% CI \([1.23, \infty]\), \(t(46) = 6.82\), \(p < .001\), \(d = 1.20\), whereas watching the performance by itself only afforded a small increase, \(M_D = 0.38\), 95\% CI \([0.06, \infty]\), \(t(44) = 2.00\), \(p = .026\), \(d = 0.25\). In the second half, participants reported no changes in closeness when watching the performance after the film, \(M_D = -0.18\), 95\% CI \([-0.44, \infty]\), \(t(37) = -1.23\), \(p = .886\), \(d = -0.12\), but a moderate increase when watching the film after the performance, \(M_D = 0.87\), 95\% CI \([0.54, \infty]\), \(t(44) = 4.45\), \(p < .001\), \(d = 0.48\) (see Figure \ref{fig:closeness-plots} B). Hypothesis 1 predicted that the performance would show larger increases in closeness with Anna Vasquez for in-person compared to livestream audiences. However, the main effect and interactions involving attendance were not significant, indicating no difference between in-person and livestream audiences. Thus, the data did not support Hypothesis 1.
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1} \caption{A: Mean and CI of the change in closeness with Anna Vasquez from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of closeness ratings across the event by time point (x-axis) and order of the media (line style). Closeness was rated on a visual analog scale ranging from 1 (0\% overlap) to 7 (90\% overlap).}\label{fig:closeness-plots}
+\end{figure}
+
+Seeing that the event increased audiences' bonding with Anna Vasquez, we were interested in exploring whether this bonding effect indeed stemmed from an increased bonding with the musicians, which extended to Anna Vasquez by affiliation. Participants' feelings of closeness with the musicians increased from baseline to the end of the event (Allen Otte: \(M = 1.45\), \(SD = 1.77\); John Lane: \(M = 1.30\), \(SD = 1.64\)). Closeness with the in-person audience showed a smaller increase (\(M = 0.49\), \(SD = 1.65\)), whereas closeness with the livestream audience barely changed (\(M = 0.08\), \(SD = 1.36\), see Figure \ref{fig:closeness-lineplots}).
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1} \caption{Mean and CI for closeness ratings of the different target persons/groups across the event by time point (x-axis), split for in-person (left) and livestream (right) attendance.}\label{fig:closeness-lineplots}
+\end{figure}
+
+Closeness with Anna Vasquez was associated with closeness with the musicians across all timepoints. Notably, the association between Anna Vasquez and Allen Otte grew stronger after watching the film and the performance (baseline: \(r_{\mathrm{s}} = .59\), \(S = 55,425.02\), \(p < .001\); end: \(r_{\mathrm{s}} = .68\), \(S = 31,603.95\), \(p < .001\)), as did the association with John Lane (baseline: \(r_{\mathrm{s}} = .54\), \(S = 62,267.16\), \(p < .001\); end: \(r_{\mathrm{s}} = .68\), \(S = 31,310.00\), \(p < .001\)). At the end of the event, the associations between Anna Vasquez and the in-person and livestream audiences were in a lower range than those with the musicians (in-person: \(r_{\mathrm{s}} = .52\), \(S = 47,650.95\), \(p < .001\); livestream: \(r_{\mathrm{s}} = .33\), \(S = 63,751.39\), \(p = .002\)).
+
+\subsubsection{Empathy}\label{empathy-1}
+
+Empathic concern increased on average by \(M = 0.69\) (\(SD = 1.15\)) scale points (see Figure \ref{fig:empathy-plots} A). The variance in empathic concern explained by the baseline alone was \(R_{m}^2 = 0.37\), which together with the fixed effects increased to \(R_{m}^2 = 0.44\). The random intercept variance was \(\sigma = 0.44\), summing to a total explained variance of \(R_{c}^2 = 0.87\).
+
+Time had a moderate effect on empathic concern, \(\beta = 0.18\), \(t (80) = 5.66\), \(p < .001\), \(d = 0.48\), with higher ratings at the end of the event compared to intermission. The main effect of time interacted moderately with medium, \(\beta = 0.19\), \(t (90) = 2.39\), \(p = 0.019\), \(d = 0.5\). We again decomposed the interaction, which revealed that in the first half of the event, the film by itself afforded a small increase in empathy, \(M_D = 0.54\), 95\% CI \([0.20, \infty]\), \(t(46) = 2.65\), \(p = .005\), \(d = 0.38\), compared to no change from the performance by itself, \(M_D = 0.10\), 95\% CI \([-0.15, \infty]\), \(t(44) = 0.69\), \(p = .246\), \(d = 0.08\). In the second half, the performance after the film afforded a small increase, \(M_D = 0.20\), 95\% CI \([0.04, \infty]\), \(t(37) = 2.11\), \(p = .021\), \(d = 0.15\), compared to a moderate increase from the film after the performance, \(M_D = 0.53\), 95\% CI \([0.31, \infty]\), \(t(43) = 4.11\), \(p < .001\), \(d = 0.45\) (see Figure \ref{fig:empathy-plots} B). Hypothesis 2 predicted that the performance would show larger increases in empathic concern for in-person compared to livestream audiences. Similarly to the closeness model, the main effect and interactions involving attendance were not significant, indicating no difference in empathy between in-person and livestream audiences. Thus, the data did not support Hypothesis 2.
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1} \caption{A: Mean and CI of the change in empathic concern from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of empathy ratings across the event by time point (x-axis) and order of the media (line style). Empathy was rated on a scale ranging from 1 (not at all) to 7 (extremely).}\label{fig:empathy-plots}
+\end{figure}
+
+\subsubsection{Awareness}\label{awareness}
+
+Audiences already had a high problem awareness before the event, which increased slightly on average (\(M = 0.46\), \(SD = 0.69\), see Figure \ref{fig:awareness-plots} A). The variance explained by the baseline alone was \(R_{m}^2 = 0.56\), which together with the fixed effects increased to \(R_{m}^2 = 0.59\). The random intercept variance was \(\sigma = 0.21\), summing to a total explained variance of \(R_{c}^2 = 0.81\).
+
+Hypothesis 3 predicted that increases in problem awareness would be larger after the film compared to the performance. However, the only significant fixed effect was a small main effect of time, \(\beta = 0.12\), \(t (84) = 3.2\), \(p = 0.002\), \(d = 0.38\), with higher problem awareness at the end of the event compared to intermission (see Figure \ref{fig:awareness-plots} B). The main effect and interactions involving medium were not significant, indicating no difference between performance and film. Thus, the data did not support Hypothesis 3. Since time did not interact with any other variable, the main effect evaluates the increase in problem awareness in the second half of the event across all media and attendance modes. Hence, only one further post-hoc test was required to test the increase in the first half, which was small but significant, \(M_D = 0.26\), 95\% CI \([0.15, \infty]\), \(t(89) = 3.84\), \(p < .001\), \(d = 0.31\).
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1} \caption{A: Mean and CI of the change in problem awareness from baseline to post-event by attendance mode. Individual data points are represented by dots. B: Mean and CI of awareness ratings across the event by time point (x-axis) and order of the media (line style). Awareness was rated on a scale ranging from 1 (strongly disagree) to 7 (strongly agree).}\label{fig:awareness-plots}
+\end{figure}
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1} \caption{Mean and CI for the NAM-TPB variables before and after the event, split for in-person (left) and livestream (right) attendance.}\label{fig:namtpb-lineplots}
+\end{figure}
+
+We explored the the other NAM-TPB variables and found that attitudes regarding wrongful imprisonment had even higher baseline ratings compared to problem awareness. However, attitudes virtually did not change throughout the event. Ascription of responsibility was the only variable with an increase similar to problem awareness (\(M = 0.42\), \(SD = 0.98\)), but in a lower range of the rating scale. All other variables showed little to no increase (see Figure \ref{fig:namtpb-lineplots}).
+
+\subsection{Charitable Behaviour}\label{charitable-behaviour}
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1} \caption{Number of observed charitable behaviours, split for in-person (left) and livestream (right) attendance. Percentages are calculated within attendance mode and behaviour. Note that participants who did not complete the event were excluded from this analysis. For mailing, `not applicable' refers to participants who indicated they were already signed up to the mailing list of the charity. For donation, `not applicable' refers to participants who did not participate in the follow-up survey asking about donation behaviour.}\label{fig:count-behaviour}
+\end{figure}
+
+At the end of the event, we assessed three options of charitable behaviour towards the non-profit organization \emph{Innocence Canada}: 49 participants took a flyer of the charity, 27 signed up to their mailing list, and 9 participants self-reported one week after the event that they had donated to the organisation, raising a total of CAD 192.09. Among the participants who completed the event, 49 (80.3\%) in-person participants and 13 (56.5\%) livestream participants performed at least one of the three behaviours, a difference that was not significant, \(\chi^2(1) = 3.743\), \(p = 0.053\). The order of film and performance between the two event days also did not impact behaviour: On the first day, 30 (76.9\%) participants performed at least one behaviour, compared to 32 (71.1\%) on the second day, \(\chi^2(1) = 0.126\), \(p = 0.722\).
+
+\begin{table}[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:behaviour-intention}Odds ratios and confidence intervals of a stepwise ordinal regression predicting the number of behaviours participants performed after the event.}
+
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{Step 1} & \multicolumn{2}{c}{Step 2} \\
+\cmidrule(r){2-3} \cmidrule(r){4-5}
+Predictors & \multicolumn{1}{c}{Step 1 OR} & \multicolumn{1}{c}{Step 1 CI} & \multicolumn{1}{c}{Step 2 OR} & \multicolumn{1}{c}{Step 2 CI}\\
+\midrule
+0|1 & 0.26 & 0.12 - 0.54 & 0.15 & 0.06 - 0.38\\
+1|2 & 3.89 & 1.85 - 8.17 & 4.13 & 1.83 - 9.32\\
+2|3 & 23.66 & 6.70 - 83.64 & 31.90 & 8.40 - 121.10\\
+Closeness with Anna & 1.51 & 0.88 - 2.61 & 1.59 & 0.90 - 2.81\\
+Empathic Concern & 1.57 & 0.87 - 2.85 & 1.02 & 0.53 - 2.00\\
+Problem Awareness & 0.86 & 0.50 - 1.48 & 0.66 & 0.37 - 1.20\\
+Behavioural Intention &  &  & 3.22 & 1.59 - 6.51\\ \midrule
+Observations & 50 &  & 50 & \\
+R$^2$ Nagelkerke & 0.246 &  & 0.437 & \\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} OR - Odds Ratio. CI - 95\% Confidence Interval. Note that this analysis only includes participants who completed the event and who had applicable data (yes or no) for all three behaviours.}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
+
+Hypotheses 4 and 5 predicted that closeness with Anna Vasquez, empathic concern for her fate, and awareness of wrongful imprisonment would influence charitable behaviour supporting \emph{Innocence Canada} through behavioural intention. We calculated a sum score of behaviours for participants with applicable data (yes or no) on all three behaviours. Then, we fit an ordered logistic regression to predict the number of behaviours participants performed, using the polr function in \emph{MASS} (Venables \& Ripley, 2002). In the first step, we predicted behaviour from closeness, empathy, and awareness, and in the second step, we added intention. The predictors in the first step explained a considerable amount of variance (\(R_{Nagelkerke}^2 = 0.25\)), even though no predictor alone had a significant effect on behaviour (all 95\% confidence intervals crossed 1, see Table \ref{tab:behaviour-intention}). In the second step, a higher intention predicted more charitable behaviours, \(OR = 3.22\), 95\% CI {[}1.59, 6.51{]} (see Figure \ref{fig:behaviour-intentionplot}). Adding intention as a predictor removed any effect of empathic concern, reducing its Odds Ratio to almost 1. The variance explained by all predictors together was \(R_{Nagelkerke}^2 = 0.44\). The data were significantly more likely under the model including intention, \(\chi^2 (1) = 12.72\), \(p < .001\).
+
+
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1} \caption{Mean and CI of behavioural intention at the end of the event by the number of behaviours participants performed. Individual datapoints are represented by dots. Note that this plot only includes participants who completed the event and who had applicable data (yes or no) for all three behaviours.}\label{fig:behaviour-intentionplot}
+\end{figure}
+
+Intention changed only very slightly throughout the event (\(M = 0.23\), \(SD = 0.96\), see Figure \ref{fig:namtpb-lineplots}). Therefore, we wanted to compare the predictive power of intention before and after the event, to see whether participants' behaviour was already predictable before they experienced the event. We fit two ordinal logistic regressions, predicting the number of behaviours participants performed from their behavioural intention at baseline and at the end of the event. Baseline intention significantly predicted behaviour after the event, \(OR = 2.13\), 95\% CI {[}1.24, 3.66{]}, although with a smaller effect than intention at the end of the event, \(OR = 2.83\), 95\% CI {[}1.59, 5.01{]}. Importantly, baseline intention explained much less variance in behaviour (\(R_{Nagelkerke}^2 = 0.16\)) compared to intention at the end of the event (\(R_{Nagelkerke}^2 = 0.28\)).
+
+The translation of intention into actual behaviour can be hindered by external factors, thereby reducing the predictive power of self-reports for behaviour. Therefore, we tested the influence of closeness, empathic concern, and problem awareness on intention at the end of the event (Hypothesis 4) separately from behaviour. Intention was associated with trait empathic concern (\(r_{\mathrm{s}} = .34\), \(S = 53,997.21\), \(p = .002\)) and the motivation to attend the event to support the social justice cause (\(r = .32\), 95\% CI \([.12, .50]\), \(t(82) = 3.10\), \(p = .003\)), therefore these variables were included as covariates. We fit a linear regression with the formula \(Intention \sim Trait Empathic Concern + Social Justice Motivation + Closeness + State Empathic Concern + Problem Awareness\) using just the data from the end of the event. After excluding two data points that violated the normality of the model residuals, the model included \(N = 74\) observations. The explained variance in intention was \(R_{adj}^2 = 0.30\). State empathic concern had a medium effect on intention (\(\beta = 0.46\), \(t (68) = 4.10\), \(p < .001\), \(f^2 = 0.25\)) after controlling for differences in the covariates. Participants who felt more empathic concern had a stronger intention to perform charitable behaviour. The other two variables of interest, closeness and problem awareness, did not predict intention (both estimates close to zero, \(p > .95\)).
+
+Finally, we explored whether charitable behaviour was driven by altruistic or egoistic motives. To this end, we compared the influence of empathic concern and personal distress on behavioural intention. Personal distress increased on average by \(M = 0.48\) (\(SD = 1.20\)) scale points from baseline to the end of the event, slightly less than empathic concern. Both were strongly correlated, \(r_{\mathrm{s}} = .60\), \(S = 1,292,177.96\), \(p < .001\). Yet, adding personal distress as a predictor to the linear regression on intention did not create multicollinearity issues in the model (all variance influence factors \textless{} 1.8). Personal distress did not have a significant effect on intention (\(\beta = 0.14\), \(t (67) = 1.04\), \(p = 0.30\)), and its addition did not change the explained variance in intention at all (\(\chi^2 (1) = 1.07\), \(p = 0.304\)).
+
+\section{Discussion}\label{discussion}
+
+This study provides empirical tests of psychological variables proposed to underlie social justice advocacy through music. Audiences reported increased social bonding with a wrongfully imprisoned person, empathic concern towards their wrongful imprisonment, and awareness of wrongful imprisonment after attending a charity event. While the performance increased awareness as effectively as the film, it had a smaller effect on social bonding and empathic concern. The effects of the performance were similar for in-person and livestream audiences alike, suggesting that advocacy through music does not require the musicians and audience to share a physical presence. Out of 84 participants who completed the event, 73.8\% showed prosocial behaviour in support of a related charity, and the intention to do so was predicted by their empathic concern. Charitable behaviour was more frequent among in-person audiences, but this difference was not significant, which further supports the interpretation that the social justice impact of charity concerts does not rely on physical presence. Charity concerts are a common application of music in social justice contexts (Clarke et al., 2015; Schreiber, 2019) and, like all live music, are increasingly being livestreamed (recent examples include One World: Together at Home, benefiting the World Health Organization's COVID-19 Solidarity Response Fund, and FireAid, benefiting the victims of the 2025 Southern California wildfires). This study represents an attempt to quantify the effectiveness of charity concerts and offers guidance on how their societal impact can be maximized.
+
+Comparing the effects of the performance and the film, we had initially expected that the film would show larger increases in problem awareness than the performance (Hypothesis 3), since the film aims to inform, whereas the performance aims to arouse emotions. Contrary to our expectations, the performance and the film afforded comparable small increases in problem awareness. This is remarkable, given the differences between the two media: The film communicates the issue of wrongful imprisonment using concrete semantic content and images, such as Allen Otte and John Lane talking about their performance in the vicinity of the Huntsville prison. The performance, on the other hand, relies on an abstract evocation of concepts such as justice and truth in primarily aesthetic ways, like poetry (Lane \& Otte, 2021). Still, the performance successfully raised awareness for wrongful imprisonment. Presumably, this is achieved through the musical content and the inferred intentions of the musicians: The performance makes use of objects like hammers, keys, and metal bars, and field recordings like prison doors slamming, protesters shouting, or an officer interrogating a suspect. These elements could give rise to extra-musical meaning (Koelsch, 2011), such that the audience interprets the music with reference to the criminal justice system. Besides the interpretation of the music itself, the audience could also infer the messaging of the musicians, i.e., the musicians' intended effect of the music (Prior, 2022; Ruth, 2018). In the case of \textit{The Innocents}, Allen Otte and John Lane intend the performance to be a ``catalyst for meaningful engagement with the issue of wrongful imprisonment'' (Lane \& Otte, 2021, p. 2). Hence, the musical references to wrongful imprisonment and the musicians' intentions to engage the audience with this issue could contribute to the performance's effect on problem awareness in a way that matches the effect of the film. Moreover, we found that no matter which medium was seen first, watching the other medium in the second half achieved further increases in problem awareness, indicating that the performance and the film both raise awareness in unique ways that can be combined for a larger effect.
+
+In contrast to the matching effect on problem awareness, we found smaller effects of the performance on social bonding and empathic concern compared to the film. One potential explanation for the small to negligible effects of the performance on empathy might be artistic abstraction: Previous studies have shown that listening to songs with prosocial lyrics increases empathy, compared to songs with neutral lyrics (Greitemeyer, 2009a, 2009b; Ruth \& Schramm, 2021). However, in contrast to the prosocial pop songs previously under investigation, the music performance in this study featured less straightforward text content. The spoken words for many tableaux in \emph{The Innocents} were composed using chance operations in the form of mesostics (arranging horizontal text around a vertical string of letters, Cage \& Retallack, 1996) or Google autocomplete (Sullivan, 2020). Other tableaux contain spliced, distorted, or looped field recordings (e.g., police radio chatter, protests, interviews, interrogations) layering multiple voices. The resulting music requires close listening and active reflection to relate it to the experience of victims of wrongful imprisonment. Not all participants might have been willing to engage in these effortful processes, or they might have contemplated the performance and what it feels like to be wrongfully imprisoned only after the event, so that the effect might not have been captured by our assessment immediately after the performance. However, this explanation seems inconsistent with the finding that the performance increased problem awareness, which arguably also requires a deeper processing to make sense of the performance.
+
+Alternatively, the advantage of the film in increasing empathy might be due to a confounding effect of exposure or familiarity: Our measure of empathic concern consisted of emotional reactions to a brief description of Anna Vasquez's wrongful imprisonment and exoneration. It is assumed in the literature that the reaction to one vignette generalizes to other vignettes (Batson, 1987). However, it is likely that the exposure to Anna Vasquez in the film, where she tells her own story and shares her reactions to the \emph{Innocents} performance, facilitated empathic perspective-taking to her case specifically more so than the performance, where she is named only once. If we would have used a description of another case of wrongful imprisonment that is mentioned in neither the performance nor the film, or a hypothetical vignette, to measure empathic concern, we might have seen less of a difference between the two media.
+
+The same confounding effect might also explain why the film caused larger increases in audiences' closeness with Anna Vasquez, compared to the performance. However, the performance still afforded small to moderate increases in closeness, which demonstrates that the social bonding effects of charity concerts can extend from the musicians to affiliated target persons outside of the musical context, similarly to what has been found in the lab (Cirelli et al., 2016). This result is in line with the literature on social bonding effects of music (Mogan et al., 2017; Rabinowitch, 2023) and provides further evidence that bonding does not only arise from co-performing, but also from listening to music (Swarbrick \& Vuoskoski, 2023). Moreover, closeness with Anna Vasquez had stronger associations with musician closeness at the end of the event compared to the beginning, suggesting that audiences included Anna Vasquez in the same social bonds that they developed with the musicians. Future studies could investigate whether bonding effects of music listening can also extend to external targets who are not affiliated with the musicians.
+
+Based on the widespread theory that music strengthens social bonds by means of mutual adjustment, we had expected the performance to have stronger social bonding effects for in-person compared to livestream audiences (Hypothesis 1). In contrast, we found no main or interaction effects of attendance mode on social bonding with Anna Vasquez. This finding adds to the few other studies of livestreamed concerts showing social bonding effects between the performing musicians and the audience at home (Onderdijk et al., 2021; Swarbrick \& Vuoskoski, 2023). Hence, it seems that shared physical presence is not a requirement for the social bonding effect of music. Instead, social bonding might be driven by unidirectional interactions of audience members with the musicians, e.g.~audience members following or imitating the musicians' attentional focus or expressive movements. Such unidirectional interactions could happen regardless of whether audience members are in the same concert hall as the musicians, or watching from home. In addition, even though the livestream audience was not physically present in the concert hall, they might have still experienced a sense of shared presence with the musicians, which could have contributed to social bonding (Onderdijk et al., 2021). Interestingly, we found that livestream participants felt similarly close to the livestream audience as in-person participants felt close to the in-person audience. This opposes the results of Swarbrick and Vuoskoski (2023), who report less social bonding among livestream audience members. The bonding among livestream audience members in our study can not be explained by unidirectional interactions, because there was no way for livestream audience members to interact with each other. Thus, their social bonding must have been driven by yet a different mechanism, potentially by experiencing the same event.
+
+Similarly to social bonding, we had expected that the performance would show larger increases in empathic concern for in-person compared to livestream audiences (H2), based on theoretical accounts that explain music's effect on empathy through embodied processes like motor resonance, imitation, and entrainment. In contrast, we found no main or interaction effects of attendance mode on empathy, suggesting that the empathy-enhancing effect of charity events does not rely on mechanisms requiring shared presence. One possible explanation is that charity events might provide an instance of prosocial learning, where the audience learns from the protagonists' demonstration of prosocial attitudes and empathic perspective taking (Greitemeyer, 2009b). This kind of learning could occur regardless of whether the event is live, livestreamed, or recorded.
+
+As expected, empathic concern had an indirect influence on charitable behaviour via behavioural intention (Hypotheses 4b \& 5). Given that charitable behaviour did not benefit Anna Vasquez directly, the influence of empathic concern suggests that even though the use of her story to measure empathy introduced a confounding effect, the empathy measure also assessed general empathy beyond the specific vignette used. Social bonding, empathic concern, and problem awareness together explained considerable variance in how many behaviours participants performed, but only behavioural intention significantly predicted behaviour. However, at the end of the event, higher empathic concern was associated with stronger intentions. Personal distress, on the contrary, was not predictive of intention, which supports the empathy-altruism relationship. The indirect influence on behaviour via intention is common for psychological models of behaviour: Typically, intention (i.e., the decision to conduct a behaviour) is considered to be the most immediate predictor of behaviour, which mediates the influence of any other psychological variables. The translation of intention into behaviour can be hindered by a variety of barriers, leading to an intention-behaviour gap. Since most of these barriers are beyond the control of the actor, they are of less interest to psychological research (Sheeran, 2002). For example, a participant in our study might have felt highly empathetic with the charity cause, and hence decided to donate, but might not have had any coins in their wallet. In such a case, the decision to donate is more relevant to the research question of prosocial effects of our event than the lack of actual behaviour.
+
+On the other hand, the absence of a direct effect of empathy on behaviour is inconsistent with the results of the majority of studies on the empathy-altruism hypothesis, which report direct associations between self-reported empathic concern and helping behaviour (reviewed in Batson, 2011). A possible explanation is that the increases in empathic concern triggered by our stimuli were insufficient to cause significant increases in intention and behaviour. Empathy-altruism studies commonly manipulate empathy by exposing participants to individuals in need. In contrast, our stimuli did not directly show individuals in need, but merely addressed and represented the suffering caused by wrongful imprisonment through film and performance (even the film features no footage of Anna Vasquez' trial or imprisonment, but relies on her retelling of her past). Hence, more exposure might be required to induce an empathic reaction large enough to cause effects on intention and behaviour.
+
+We found no support for an influence of social bonding on charitable behaviour via intentions, contrary to Hypothesis 4a. Similarly, some of the studies on the prosocial effects of music experiences found increases in both bonding and prosocial behaviour, but no direct effect of bonding on prosocial behaviour (Reddish et al., 2016; Valdesolo \& DeSteno, 2011). Interestingly, Valdesolo and DeSteno (2011) report that bonding instead mediated the effect on a different variable, namely compassion. This path empirically supports the theoretical assumption that perceived similarity is required for empathic perspective taking (Cialdini et al., 1997; Clarke et al., 2015; Rabinowitch et al., 2013). If social bonding indeed facilitates empathic concern, one explanation for our results could be that the influence of bonding on charitable behaviour was fully mediated by empathic concern, and hence bonding did not uniquely predict intentions or behaviour.
+
+We also found no support for an influence of awareness on charitable behaviour via intentions, contrary to the relationships hypothesized in the norm activation model (Hypothesis 4c). Speculatively, awareness might be more relevant to support lesser known social justice causes. The high baseline awareness in our study might have resulted from the self-selection of most of the sample: Except for the participants recruited through Prolific, participants chose to buy a ticket to this specific event, so it is not surprising that they were already aware of the topic around which the event revolved. However, it is generally common for concert audiences to self-select the concert they attend. Therefore, most charity concerts, regardless of their charity cause, can be assumed to have an audience with a relatively high baseline awareness. Another potential explanation for the lack of influence of awareness is that the NAM-TPB questionnaire in our study was not validated. Since we found no existing questionnaire measuring awareness of wrongful imprisonment, we wrote the items ourselves. Even though we made an effort to stay close to other NAM-TPB questionnaires (Savari et al., 2023; Smith \& McSweeney, 2007; Steg \& De Groot, 2010; Torres-Harding et al., 2012), it is possible that our items did not cover the full construct of problem awareness. Further, on a theoretical level, the primacy of awareness for norm-guided behaviour as postulated in the norm activation model is debated in the literature. A meta-analysis of 56 studies regarding environmental behaviour found no support for the assumed causal chain in which problem awareness precedes ascription of responsibility, which then activates personal norms to guide moral behaviour (Klöckner, 2013). Instead, problem awareness and ascription of consequences were found to be among a number of predictors of personal norms. Personal norms, in turn, predicted behavioural intention, but less so than attitudes and perceived behavioural control. Hence, our study is not the only one to find problem awareness to be empirically less relevant for norm-guided behaviour.
+
+Another theory suggested in the music and prosociality literature is that shared music experiences increase positive affect, which facilitates prosocial behaviour (Mogan et al., 2017). However, this explanation can be ruled out in our study due to the unique music stimulus: In contrast to most music experiences, the \emph{Innocents} performance decreased participants' positive affect. Regardless, participants found the performance highly engaging, suggesting that for charity concerts specifically, a decrease in positive affect is not necessarily an undesirable outcome.
+
+\subsection{Limitations}\label{limitations}
+
+Our findings provide evidence that seeing a performance and a film about wrongful imprisonment increases bonding, empathy, and awareness specific to that topic, and that empathy drives the intention to support a charity relevant to that topic, for both in-person and livestream audiences. In line with other literature demonstrating that recorded songs and videos thematizing suffering and altruism increase empathy and subsequent helping behaviour, we have reason to believe that this effect generalizes to charity concerts and other media advocating for different topics related to social justice in the lab and in community settings. However, given that empathic concern is related to taking the perspective of an individual in need, the effect might be limited to advocacy regarding immediate human suffering. Examples where the effect might not apply include advocacy for non-human targets (e.g., to protect the rain forest or endangered marine animals), or advocacy for human needs that do not currently cause suffering (e.g., to finance a political campaign or a concert tour).
+
+The performance in this study featured words, albeit with a more abstract semantic content than in previously studied prosocial songs. This leaves open the question of how purely instrumental music advocacy would affect advocacy outcomes. Additionally, in this study the setting of the music was one where the audience was receptive rather than participatory. A clear distinction between performers and listeners is specific to Western music, whereas many non-Western and community-based music traditions emphasize participation and co-creation. Active participation in music advocacy may engage different psychological processes and hence lead to different effects than the ones reported here.
+
+Regarding our sample, our participants were predominantly WEIRD (Western, Educated, Industrialized, Rich, and Democratic, Henrich, Heine, \& Norenzayan, 2010), a common bias in music psychology research (Jakubowski et al., 2025). However, the recruitment of livestream participants via Prolific introduced some heterogeneity. The similarity of findings between in-person and livestream audiences not only supports the effectiveness of livestreamed events but also suggests that the observed effects may generalize to some non-WEIRD cultural contexts.
+
+A central limitation of our study is the confounding effect of exposure to Anna Vasquez on the measures of social bonding and empathic concern, which were phrased around her story. Even though both measures attempt to assess how the audience felt towards victims of wrongful imprisonment in general, they required a reference person, for which we chose Anna Vasquez. However, since Anna Vasquez is featured much more prominently in the film than in the performance, the differences in the bonding and empathy effects we observed between the two media might be exaggerated by differences in familiarity with Anna Vasquez specifically, rather than differences in general feelings towards victims of wrongful imprisonment.
+
+In addition, our conclusions regarding the effect of the performance on charitable behaviour are limited by the lack of a control group for the behavioural measures. The self-reports were assessed at multiple times, allowing to compare the influence of the performance against the influence of the film. Charitable behaviour, however, could only be assessed once, at the end of the event. Therefore, we can merely observe that participants performed charitable behaviour, but we lack evidence of whether experiencing the event led to more charitable behaviour compared to seeing the performance or the film alone, or compared to not attending any event at all. Assessing behaviour only at the end of the event also creates another issue: Participants could have already researched information about the charity \emph{Innocence Canada}, signed up to their mailing list, or donated to their cause at an earlier time during their study participation, for instance during the intermission. One pointer to this potential problem is that 12 participants responded that they had already joined the mailing list when offered to sign up at the end of the event. Any such early actions, however, were not recorded, and thus the behaviour reported here might underestimate the actual behaviour participants performed throughout the study.
+
+\subsection{Implications and Future Directions}\label{implications-and-future-directions}
+
+Taken together, we have shown that the \textit{Innocents} film and performance advocated for victims of wrongful imprisonment by strengthening bonding, empathy, and awareness, and motivated charitable behaviour among in-person and livestream audiences, with empathy predicting behavioural intention. Our results have relevant implications for anyone using art for advocacy: Given the central role of empathy for charitable behaviour, we recommend artists to highlight individual stories of injustice and to build bridges so that their audience can adopt the perspective of affected individuals and relate to them. Furthermore, we show that effective advocacy does not require shared presence. Therefore, we encourage artists and event organizers to livestream their advocacy events to wider audiences. The COVID-19 pandemic necessitated a spread of livestreams and other digital formats in the live entertainment sector and familiarized audiences with remote attendance modes. Rather than cutting back on livestreams, these options should be maintained post-pandemic, seeing that they are similarly effective for advocacy and social connection.
+
+In addition, we encourage further psychological studies on music advocacy. The performance and film used in our study are only two specific instances of social justice advocacy through artistic media. As mentioned in the beginning, music is commonly used to advocate for social justice, with an immense diversity in the music, performance contexts, audiences, and social justice issues involved. While this diversity has been documented and investigated from a musicological perspective, further studies are needed to test the generalizability of the findings from this study to other instances of music advocacy. Future studies could investigate advocacy for issues that are lesser known or that do not cause immediate human suffering, where other factors than empathy might be more decisive.
+
+Future studies could also address the role of synchrony in promoting charitable behaviour. As discussed in the beginning, previous research has established that synchronizing with each other promotes social bonding and cooperation, but few studies have investigated whether synchrony can also foster prosociality towards external targets. In this study, we merely look at self-reported social bonding as a hypothesized outcome of synchrony. However, we plan to analyse the physiological data collected during our event to investigate whether cardiac and gaze synchrony are associated with social bonding and charitable behaviour.
+
+Comparing our study to previous research on the effects of listening to songs with prosocial lyrics (Greitemeyer, 2009b, 2009a; Ruth, 2017) opens up further avenues of future investigation. For example, previous studies presented songs without any visuals, suggesting that advocacy can be driven by auditory information alone. In our study, however, the \emph{Innocents} performance used objects associated with the criminal justice system, thus also making use of visual cues to create extra-musical meaning. Moreover, previous studies used pre-recorded songs, whereas our event was live. Live events require a lot of resources, from the material aspects, such as venue and equipment, to the many hands required to facilitate the event. Livestreaming can increase the reach of a live event at the time it happens, but recording an event extends its reach to future audiences. However, this comes at the trade-off of creating distance to the audience in both physical space and time. Despite the abundance of music streaming, people continue to seek live events for their uniqueness, unpredictability, and the value of ``being there'' as it happens (Mulder \& Hitters, 2021), suggesting added value of a live experience that is lost in a recording. Thus, future research could investigate how visual information and liveness of the music contribute to music advocacy outcomes. Going forward, we hope to see more empirical research on music advocacy. Researchers might be motivated by the contributions this kind of research makes beyond their field of research: Practitioners benefit from the resulting evidence for the effectiveness of music advocacy, which can help them justify their work to funding agencies and other decisive authorities. Charities benefit from the behavioural outcomes elicited from participants. Finally, the social justice issues central to this kind of research are not only highlighted to participants via the musical stimuli, but also to the scientific community via dissemination of the research, creating further exposure and opportunities for engagement with pressing societal concerns.
+
+\newpage
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-ajzen_theory_1991}
+Ajzen, I. (1991). The theory of planned behavior. \emph{Organizational Behavior and Human Decision Processes}, \emph{50}(2), 179--211. https://doi.org/\url{https://doi.org/10.1016/0749-5978(91)90020-T}
+
+\bibitem[\citeproctext]{ref-ajzen_theory_2011}
+Ajzen, I. (2011). The theory of planned behaviour: {Reactions} and reflections. \emph{Psychology \& Health}, \emph{26}(9), 1113--1127. https://doi.org/\url{https://doi.org/10.1080/08870446.2011.613995}
+
+\bibitem[\citeproctext]{ref-aron_inclusion_1992}
+Aron, A., Aron, E. N., \& Smollan, D. (1992). Inclusion of other in the self scale and the structure of interpersonal closeness. \emph{Journal of Personality and Social Psychology}, \emph{63}(4), 596. https://doi.org/\url{https://doi.org/10.1037/0022-3514.63.4.596}
+
+\bibitem[\citeproctext]{ref-R-papaja}
+Aust, F., \& Barth, M. (2023). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. Retrieved from \url{https://github.com/crsh/papaja}
+
+\bibitem[\citeproctext]{ref-berkowitz_prosocial_1987}
+Batson, C. D. (1987). Prosocial {Motivation}: {Is} it ever {Truly} {Altruistic}? In L. Berkowitz (Ed.), \emph{Advances in {Experimental} {Social} {Psychology}} (Vol. 20, pp. 65--122). New York, NY: Academic Press.
+
+\bibitem[\citeproctext]{ref-batson_altruism_2011}
+Batson, C. D. (2011). \emph{Altruism in humans} (1st ed.). New York: Oxford University Press. \url{https://doi.org/10.1093/acprof:oso/9780195341065.001.0001}
+
+\bibitem[\citeproctext]{ref-schroeder_empathyaltruism_2015}
+Batson, C. D., Lishner, D. A., \& Stocks, E. L. (2015). The {Empathy}--{Altruism} {Hypothesis}. In D. A. Schroeder \& W. G. Graziano (Eds.), \emph{The {Oxford} {Handbook} of {Prosocial} {Behavior}} (pp. 259--281). \url{https://doi.org/10.1093/oxfordhb/9780195399813.013.023}
+
+\bibitem[\citeproctext]{ref-bauer_quantitative_2021}
+Bauer, G. R. (2021). Quantitative intersectional study design and primary data collection. \emph{Meet the Methods Series}, \emph{3}(1). Retrieved from \url{https://cihr-irsc.gc.ca/e/52352.html}
+
+\bibitem[\citeproctext]{ref-boccignone_pyvhr_2022}
+Boccignone, G., Conte, D., Cuculo, V., D'Amelio, A., Grossi, G., Lanzarotti, R., \& Mortara, E. (2022). {pyVHR}: A {Python} framework for remote photoplethysmography. \emph{PeerJ Computer Science}, \emph{8}, e929. \url{https://doi.org/10.7717/peerj-cs.929}
+
+\bibitem[\citeproctext]{ref-brysbaert_power_2018}
+Brysbaert, M., \& Stevens, M. (2018). Power analysis and effect size in mixed effects models: {A} tutorial. \emph{Journal of Cognition}, \emph{1}(1), 9. \url{https://doi.org/10.5334/joc.10}
+
+\bibitem[\citeproctext]{ref-cage_musicage_1996}
+Cage, John., \& Retallack, J. (1996). \emph{Musicage: {Cage} muses on words, art, music}. Middletown, CT: Wesleyan University Press.
+
+\bibitem[\citeproctext]{ref-canadian_council_for_refugees_power_nodate}
+Canadian Council for Refugees. (n.d.). \emph{Power wheel}. Retrieved from \url{https://ccrweb.ca/en/anti-oppression}
+
+\bibitem[\citeproctext]{ref-cialdini_reinterpreting_1997}
+Cialdini, R. B., Brown, S. L., Lewis, B. P., Luce, C., \& Neuberg, S. L. (1997). Reinterpreting the empathy--altruism relationship: {When} one into one equals oneness. \emph{Journal of Personality and Social Psychology}, \emph{73}(3), 481. https://doi.org/\url{https://doi.org/10.1037/0022-3514.73.3.481}
+
+\bibitem[\citeproctext]{ref-cirelli_interpersonal_2014}
+Cirelli, L. K., Einarson, K. M., \& Trainor, L. J. (2014). Interpersonal synchrony increases prosocial behavior in infants. \emph{Developmental Science}, \emph{17}(6), 1003--1011. \url{https://doi.org/10.1111/desc.12193}
+
+\bibitem[\citeproctext]{ref-cirelli_social_2016}
+Cirelli, L. K., Wan, S. J., \& Trainor, L. J. (2016). Social effects of movement synchrony: {Increased} infant helpfulness only transfers to affiliates of synchronously moving partners. \emph{Infancy}, \emph{21}(6), 807--821. \url{https://doi.org/10.1111/infa.12140}
+
+\bibitem[\citeproctext]{ref-clarke_music_2015}
+Clarke, E., DeNora, T., \& Vuoskoski, J. (2015). Music, empathy and cultural understanding. \emph{Physics of Life Reviews}, \emph{15}, 61--88. \url{https://doi.org/10.1016/j.plrev.2015.09.001}
+
+\bibitem[\citeproctext]{ref-cohen_power_1992}
+Cohen, J. (1992). A power primer. \emph{Psychological Bulletin}, \emph{112}(1), 155--159. \url{https://doi.org/10.1037/0033-2909.112.1.155}
+
+\bibitem[\citeproctext]{ref-coyne_sex_2015}
+Coyne, S. M., \& Padilla-Walker, L. M. (2015). Sex, violence, \& rock n'roll: {Longitudinal} effects of music on aggression, sex, and prosocial behavior during adolescence. \emph{Journal of Adolescence}, \emph{41}, 96--104. https://doi.org/\url{https://doi.org/10.1016/j.adolescence.2015.03.002}
+
+\bibitem[\citeproctext]{ref-cross_ill_2020}
+Cross, L., Wilson, A. D., \& Golonka, S. (2020). I'll just watch: {Do} the pro-social effects of coordination really generalize to non-actors? \emph{The Journal of Social Psychology}, \emph{160}(2), 248--262. \url{https://doi.org/10.1080/00224545.2019.1623161}
+
+\bibitem[\citeproctext]{ref-davis_multidimensional_1980}
+Davis, M. (1980). A multidimensional approach to individual differences in empathy. \emph{JSAS Catalog of Selected Documents in Psychology}, \emph{10}, 85.
+
+\bibitem[\citeproctext]{ref-de_groot_morality_2009}
+De Groot, J. I. M., \& Steg, L. (2009). Morality and prosocial behavior: {The} role of awareness, responsibility, and norms in the norm activation model. \emph{The Journal of Social Psychology}, \emph{149}(4), 425--449. \url{https://doi.org/10.3200/SOCP.149.4.425-449}
+
+\bibitem[\citeproctext]{ref-duckworth_wheel_2020}
+Duckworth, S. (2020). \emph{Wheel of {Power}/{Privilege}}. Retrieved from \url{https://www.flickr.com/photos/sylviaduckworth/50500299716/}
+
+\bibitem[\citeproctext]{ref-R-wordcloud}
+Fellows, I. (2018). \emph{Wordcloud: Word clouds}. Retrieved from \url{https://cran.r-project.org/package=wordcloud}
+
+\bibitem[\citeproctext]{ref-fink_role_2024}
+Fink, L. K., Fiehn, H., \& Wald-Fuhrmann, M. (2024). The role of audiovisual congruence in aesthetic appreciation of contemporary music and visual art. \emph{Scientific Reports}, \emph{14}(1), 20923. \url{https://doi.org/10.1038/s41598-024-71399-y}
+
+\bibitem[\citeproctext]{ref-fink_viral_2021}
+Fink, L. K., Warrenburg, L. A., Howlin, C., Randall, W. M., Hansen, N. Chr., \& Wald-Fuhrmann, M. (2021). Viral tunes: Changes in musical behaviours and interest in coronamusic predict socio-emotional coping during {COVID}-19 lockdown. \emph{Humanities and Social Sciences Communications}, \emph{8}(1). \url{https://doi.org/10.1057/s41599-021-00858-y}
+
+\bibitem[\citeproctext]{ref-flannery_naturalistic_2024}
+Flannery, M. B., \& Fink, L. K. (2024). \emph{Naturalistic measurement of multi-person cardiac activity using open source smartwatch technology} {[}Poster presentation{]}. Hamilton, ON. Retrieved from \url{https://www.neuromusic.ca/posters-2024/p2-9-naturalistic-measurement-of-multi-person-cardiac-activity-using-open-source-smartwatch-technology/}
+
+\bibitem[\citeproctext]{ref-greitemeyer_effects_2009}
+Greitemeyer, T. (2009a). Effects of songs with prosocial lyrics on prosocial behavior: Further evidence and a mediating mechanism. \emph{Personality \& Social Psychology Bulletin}, \emph{35}(11), 1500--1511. \url{https://doi.org/10.1177/0146167209341648}
+
+\bibitem[\citeproctext]{ref-greitemeyer_effects_2009-1}
+Greitemeyer, T. (2009b). Effects of songs with prosocial lyrics on prosocial thoughts, affect, and behavior. \emph{Journal of Experimental Social Psychology}, \emph{45}(1), 186--190. \url{https://doi.org/10.1016/j.jesp.2008.08.003}
+
+\bibitem[\citeproctext]{ref-R-Hmisc}
+Harrell Jr, F. E. (2024). \emph{Hmisc: Harrell miscellaneous}. Retrieved from \url{https://CRAN.R-project.org/package=Hmisc}
+
+\bibitem[\citeproctext]{ref-henrich_weirdest_2010}
+Henrich, J., Heine, S. J., \& Norenzayan, A. (2010). The weirdest people in the world? \emph{Behavioral and Brain Sciences}, \emph{33}(2-3), 61--83. \url{https://doi.org/10.1017/S0140525X0999152X}
+
+\bibitem[\citeproctext]{ref-hove_shared_2008}
+Hove, M. J. (2008). Shared circuits, shared time, and interpersonal synchrony. \emph{Behavioral and Brain Sciences}, \emph{31}(1), 29--30. \url{https://doi.org/10.1017/S0140525X07003202}
+
+\bibitem[\citeproctext]{ref-hove_its_2009}
+Hove, M. J., \& Risen, J. L. (2009). It's all in the timing: {Interpersonal} synchrony increases affiliation. \emph{Social Cognition}, \emph{27}(6), 949--960. \url{https://doi.org/10.1521/soco.2009.27.6.949}
+
+\bibitem[\citeproctext]{ref-howell_lights_2011}
+Howell, R. A. (2011). Lights, camera \ldots{} action? {Altered} attitudes and behaviour in response to the climate change film {The} {Age} of {Stupid}. \emph{Global Environmental Change}, \emph{21}(1), 177--187. \url{https://doi.org/10.1016/j.gloenvcha.2010.09.004}
+
+\bibitem[\citeproctext]{ref-jakubowski_participant_2025}
+Jakubowski, K., Ahmad, N., Armitage, J., Barrett, L., Edwards, A., Galbo, E., \ldots{} Eerola, T. (2025). Participant and musical diversity in music psychology research. \emph{Music \& Science}, \emph{8}. \url{https://doi.org/10.1177/20592043251317180}
+
+\bibitem[\citeproctext]{ref-R-ggpubr}
+Kassambara, A. (2023). \emph{Ggpubr: 'ggplot2' based publication ready plots}. Retrieved from \url{https://CRAN.R-project.org/package=ggpubr}
+
+\bibitem[\citeproctext]{ref-kirschner_joint_2010}
+Kirschner, S., \& Tomasello, M. (2010). Joint music making promotes prosocial behavior in 4-year-old children. \emph{Evolution and Human Behavior}, \emph{31}(5), 354--364. https://doi.org/\url{https://doi.org/10.1016/j.evolhumbehav.2010.04.004}
+
+\bibitem[\citeproctext]{ref-klockner_comprehensive_2013}
+Klöckner, C. A. (2013). A comprehensive model of the psychology of environmental behaviour---{A} meta-analysis. \emph{Global Environmental Change}, \emph{23}(5), 1028--1038. \url{https://doi.org/10.1016/j.gloenvcha.2013.05.014}
+
+\bibitem[\citeproctext]{ref-koelsch_towards_2011}
+Koelsch, S. (2011). Towards a neural basis of processing musical semantics. \emph{Physics of Life Reviews}, 89--105. \url{https://doi.org/10.1016/j.plrev.2011.04.004}
+
+\bibitem[\citeproctext]{ref-R-lmerTest}
+Kuznetsova, A., Brockhoff, P. B., \& Christensen, R. H. B. (2017). {lmerTest} package: Tests in linear mixed effects models. \emph{Journal of Statistical Software}, \emph{82}(13), 1--26. \url{https://doi.org/10.18637/jss.v082.i13}
+
+\bibitem[\citeproctext]{ref-lane_innocents_2006}
+Lane, J., \& Otte, A. (2006). \emph{The {Innocents}}.
+
+\bibitem[\citeproctext]{ref-lane_innocents_2021}
+Lane, J., \& Otte, A. (2021). "{The} {Innocents}": {At} the intersection of music and social justice advocacy. \emph{Percussive Notes}, \emph{59}(6). Retrieved from \url{https://pas.org/publication-articles/the-innocents-at-the-intersection-of-music-and-social-justice-advocacy/}
+
+\bibitem[\citeproctext]{ref-lange_just_2015}
+Lange, K., Kühn, S., \& Filevich, E. (2015). "{Just} {Another} {Tool} for {Online} {Studies}'' ({JATOS}): {An} easy solution for setup and management of web servers supporting online studies. \emph{PLOS ONE}, \emph{10}(6), e0130834. \url{https://doi.org/10.1371/journal.pone.0130834}
+
+\bibitem[\citeproctext]{ref-leeuw_jspsych_2023}
+Leeuw, J. R. de, Gilbert, R. A., \& Luchterhandt, B. (2023). {jsPsych}: {Enabling} an open-source collaborative ecosystem of behavioral experiments. \emph{Journal of Open Source Software}, \emph{8}(85), 5351. \url{https://doi.org/10.21105/joss.05351}
+
+\bibitem[\citeproctext]{ref-lorenc_innocents_2022}
+Lorenc, W. (2022). \emph{The {Innocents}}.
+
+\bibitem[\citeproctext]{ref-meteyard_best_2020}
+Meteyard, L., \& Davies, R. A. I. (2020). Best practice guidance for linear mixed-effects models in psychological science. \emph{Journal of Memory and Language}, \emph{112}, 104092. \url{https://doi.org/10.1016/j.jml.2020.104092}
+
+\bibitem[\citeproctext]{ref-mogan_be_2017}
+Mogan, R., Fischer, R., \& Bulbulia, J. A. (2017). To be in synchrony or not? {A} meta-analysis of synchrony's effects on behavior, perception, cognition and affect. \emph{Journal of Experimental Social Psychology}, \emph{72}, 13--20. \url{https://doi.org/10.1016/j.jesp.2017.03.009}
+
+\bibitem[\citeproctext]{ref-mulder_visiting_2021}
+Mulder, M., \& Hitters, E. (2021). Visiting pop concerts and festivals: Measuring the value of an integrated live music motivation scale. \emph{Cultural Trends}, \emph{30}(4), 355--375. \url{https://doi.org/10.1080/09548963.2021.1916738}
+
+\bibitem[\citeproctext]{ref-nolan_inconvenient_2010}
+Nolan, J. M. (2010). {``{An} {Inconvenient} {Truth}''} increases knowledge, concern, and willingness to reduce greenhouse gases. \emph{Environment and Behavior}, \emph{42}(5), 643--658. \url{https://doi.org/10.117710013916509357696}
+
+\bibitem[\citeproctext]{ref-ollen_criterion-related_2006}
+Ollen, J. (2006). \emph{A criterion-related validity test of selected indicators of musical sophistication using expert ratings} (Doctoral dissertation). Retrieved from \url{https://rave.ohiolink.edu/etdc/view?acc_num=osu1161705351}
+
+\bibitem[\citeproctext]{ref-onderdijk_livestream_2021}
+Onderdijk, K. E., Swarbrick, D., Kerrebroeck, B. van, Mantei, M., Vuoskoski, J. K., Maes, P.-J., \& Leman, M. (2021). Livestream experiments: {The} role of {COVID}-19, agency, presence, and social context in facilitating social connectedness. \emph{Frontiers in Psychology}, \emph{12}, 647929. \url{https://doi.org/10.3389/fpsyg.2021.647929}
+
+\bibitem[\citeproctext]{ref-prior_how_2022}
+Prior, H. M. (2022). How can music help us to address the climate crisis? \emph{Music \& Science}, \emph{5}. \url{https://doi.org/10.1177/20592043221075725}
+
+\bibitem[\citeproctext]{ref-R-base}
+R Core Team. (2024). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+
+\bibitem[\citeproctext]{ref-rabinowitch_musical_2023}
+Rabinowitch, T.-C. (2023). Musical engagement as a duet of tight synchrony and loose interpretability. \emph{Physics of Life Reviews}, \emph{44}, 122--136. \url{https://doi.org/10.1016/j.plrev.2022.12.019}
+
+\bibitem[\citeproctext]{ref-rabinowitch_long-term_2013}
+Rabinowitch, T.-C., Cross, I., \& Burnard, P. (2013). Long-term musical group interaction has a positive influence on empathy in children. \emph{Psychology of Music}, \emph{41}(4), 484--498. \url{https://doi.org/10.1177/0305735612440609}
+
+\bibitem[\citeproctext]{ref-reddish_does_2014}
+Reddish, P., Bulbulia, J., \& Fischer, R. (2014). Does synchrony promote generalized prosociality? \emph{Religion, Brain \& Behavior}, \emph{4}(1), 3--19. \url{https://doi.org/10.1080/2153599X.2013.764545}
+
+\bibitem[\citeproctext]{ref-reddish_collective_2016}
+Reddish, P., Tong, E. M. W., Jong, J., Lanman, J. A., \& Whitehouse, H. (2016). Collective synchrony increases prosociality towards non-performers and outgroup members. \emph{British Journal of Social Psychology}, \emph{55}(4), 722--738. \url{https://doi.org/10.1111/bjso.12165}
+
+\bibitem[\citeproctext]{ref-ruth_heal_2017}
+Ruth, N. (2017). {``{Heal} the {World}''}: {A} field experiment on the effects of music with prosocial lyrics on prosocial behavior. \emph{Psychology of Music}, \emph{45}(2), 298--304. \url{https://doi.org/10.1177/0305735616652226}
+
+\bibitem[\citeproctext]{ref-ruth_they_2018}
+Ruth, N. (2018). {``{They} don't really care...''}: {Effects} of music with prosocial content and corresponding media coverage on prosocial behavior. \emph{Musicae Scientiae}, \emph{22}(3), 415--433. \url{https://doi.org/10.1177/1029864917716735}
+
+\bibitem[\citeproctext]{ref-ruth_effects_2021}
+Ruth, N., \& Schramm, H. (2021). Effects of prosocial lyrics and musical production elements on emotions, thoughts and behavior. \emph{Psychology of Music}, \emph{49}(4), 759--776. \url{https://doi.org/10.1177/0305735620902534}
+
+\bibitem[\citeproctext]{ref-sakellari_cinematic_2015}
+Sakellari, M. (2015). Cinematic climate change, a promising perspective on climate change communication. \emph{Public Understanding of Science}, \emph{24}(7), 827--841. \url{https://doi.org/10.1177/0963662514537028}
+
+\bibitem[\citeproctext]{ref-savari_integrating_2023}
+Savari, M., Damaneh, H. E., Damaneh, H. E., \& Cotton, M. (2023). Integrating the norm activation model and theory of planned behaviour to investigate farmer pro-environmental behavioural intention. \emph{Scientific Reports}, \emph{13}(1), 5584. \url{https://doi.org/10.1038/s41598-023-32831-x}
+
+\bibitem[\citeproctext]{ref-saxena_deep_2023}
+Saxena, S., Fink, L. K., \& Lange, E. B. (2023). Deep learning models for webcam eye tracking in online experiments. \emph{Behavior Research Methods}, \emph{56}, 3487--3503. \url{https://doi.org/10.3758/s13428-023-02190-6}
+
+\bibitem[\citeproctext]{ref-saxena_socialeyes_2025}
+Saxena, S., Visram, A., Lobo, N., Mirza, Z., Khan, M. R., Pirabaharan, B., \ldots{} Fink, L. K. (2025). {SocialEyes}: {Scaling} mobile eye-tracking to multi-person social settings. \emph{Proceedings of the 2025 {Conference} on {Human} {Factors} in {Computing} {Systems} ({CHI} 2025)}. Association for Computing Machinery. \url{https://doi.org/10.1145/3706598.3713910}
+
+\bibitem[\citeproctext]{ref-schimmack_dimensional_2000}
+Schimmack, U., \& Grob, A. (2000). Dimensional models of core affect: A quantitative comparison by means of structural equation modeling. \emph{European Journal of Personality}, \emph{14}(4), 325--345. \url{https://doi.org/10.1002/1099-0984(200007/08)14:4\%3C325::AID-PER380\%3E3.0.CO;2-I}
+
+\bibitem[\citeproctext]{ref-schindler_measuring_2017}
+Schindler, I., Hosoya, G., Menninghaus, W., Beermann, U., Wagner, V., Eid, M., \& Scherer, K. R. (2017). Measuring aesthetic emotions: {A} review of the literature and a new assessment tool. \emph{PloS One}, \emph{12}(6), e0178899. \url{https://doi.org/10.1371/journal.pone.0178899}
+
+\bibitem[\citeproctext]{ref-schreiber_music_2019}
+Schreiber, B. (2019). \emph{Music is power. {Popular} songs, social justice, and the will to change}. New Brunswick: Rutgers University Press.
+
+\bibitem[\citeproctext]{ref-schwartz_normative_1977}
+Schwartz, S. H. (1977). Normative influences on altruism. In \emph{Advances in {Experimental} {Social} {Psychology}} (Vol. 10, pp. 221--279). New York, NY: Academic Press.
+
+\bibitem[\citeproctext]{ref-sheeran_intentionbehavior_2002}
+Sheeran, P. (2002). Intention--behavior relations: {A} conceptual and empirical review. \emph{European Review of Social Psychology}, \emph{12}(1), 1--36. \url{https://doi.org/10.1080/14792772143000003}
+
+\bibitem[\citeproctext]{ref-smith_charitable_2007}
+Smith, J. R., \& McSweeney, A. (2007). Charitable giving: {The} effectiveness of a revised theory of planned behaviour model in predicting donating intentions and behaviour. \emph{Journal of Community \& Applied Social Psychology}, \emph{17}(5), 363--386. \url{https://doi.org/10.1002/casp.906}
+
+\bibitem[\citeproctext]{ref-soto_next_2017}
+Soto, C. J., \& John, O. P. (2017). The next {Big} {Five} {Inventory} ({BFI}-2): {Developing} and assessing a hierarchical model with 15 facets to enhance bandwidth, fidelity, and predictive power. \emph{Journal of Personality and Social Psychology}, \emph{113}(1), 117. https://doi.org/\url{https://doi.org/10.1037/pspp0000096}
+
+\bibitem[\citeproctext]{ref-steg_explaining_2010}
+Steg, Linda., \& De Groot, Judith. (2010). Explaining prosocial intentions: {Testing} causal relationships in the norm activation model. \emph{British Journal of Social Psychology}, \emph{49}(4), 725--743. \url{https://doi.org/10.1348/014466609X477745}
+
+\bibitem[\citeproctext]{ref-sullivan_how_2020}
+Sullivan, D. (2020). How {Google} autocomplete predictions are generated. Retrieved from \url{https://blog.google/products/search/how-google-autocomplete-predictions-work/}
+
+\bibitem[\citeproctext]{ref-swarbrick_collectively_2023}
+Swarbrick, D., \& Vuoskoski, J. K. (2023). Collectively classical: {Connectedness}, awe, feeling moved, and motion at a live and livestreamed concert. \emph{Music \& Science}, \emph{6}. \url{https://doi.org/10.1177/20592043231207595}
+
+\bibitem[\citeproctext]{ref-torres-harding_development_2012}
+Torres-Harding, S. R., Siers, B., \& Olson, B. D. (2012). Development and psychometric evaluation of the {Social} {Justice} {Scale} ({SJS}). \emph{American Journal of Community Psychology}, \emph{50}(1), 77--88. \url{https://doi.org/10.1007/s10464-011-9478-2}
+
+\bibitem[\citeproctext]{ref-R-png}
+Urbanek, S. (2022). \emph{Png: Read and write PNG images}. Retrieved from \url{https://CRAN.R-project.org/package=png}
+
+\bibitem[\citeproctext]{ref-valdesolo_synchrony_2011}
+Valdesolo, P., \& DeSteno, D. (2011). Synchrony and the social tuning of compassion. \emph{Emotion}, \emph{11}(2), 262--266. \url{https://doi.org/10.1037/a0021302}
+
+\bibitem[\citeproctext]{ref-R-MASS}
+Venables, W. N., \& Ripley, B. D. (2002). \emph{Modern applied statistics with s} (Fourth). New York: Springer. Retrieved from \url{https://www.stats.ox.ac.uk/pub/MASS4/}
+
+\bibitem[\citeproctext]{ref-westfall_statistical_2014}
+Westfall, J., Kenny, D. A., \& Judd, C. M. (2014). Statistical power and optimal design in experiments in which samples of participants respond to samples of stimuli. \emph{Journal of Experimental Psychology: General}, \emph{143}(5), 2020--2045. \url{https://doi.org/10.1037/xge0000014}
+
+\bibitem[\citeproctext]{ref-white_charitable_2023}
+White, K. M., Sutton, L. C. S., \& Zhao, X. (2023). Charitable donations and the theory of planned behaviour: {A} systematic review and meta-analysis. \emph{PLOS ONE}, \emph{18}(5), e0286053. \url{https://doi.org/10.1371/journal.pone.0286053}
+
+\bibitem[\citeproctext]{ref-R-ggplot2}
+Wickham, H. (2016). \emph{ggplot2: Elegant graphics for data analysis}. New York, NY: Springer-Verlag. Retrieved from \url{https://ggplot2.tidyverse.org}
+
+\bibitem[\citeproctext]{ref-R-psych}
+William Revelle. (2024). \emph{Psych: Procedures for psychological, psychometric, and personality research}. Evanston, Illinois: Northwestern University. Retrieved from \url{https://CRAN.R-project.org/package=psych}
+
+\bibitem[\citeproctext]{ref-wiltermuth_synchrony_2009}
+Wiltermuth, S. S., \& Heath, C. (2009). Synchrony and cooperation. \emph{Psychological Science}, \emph{20}(1), 1--5. \url{https://doi.org/10.1111/j.1467-9280.2008.02253.x}
+
+\bibitem[\citeproctext]{ref-zhang_single_2019}
+Zhang, J. D., \& Schubert, E. (2019). A single item measure for identifying musician and nonmusician categories based on measures of musical sophistication. \emph{Music Perception: An Interdisciplinary Journal}, \emph{36}(5), 457--467. https://doi.org/\url{https://doi.org/10.1525/mp.2019.36.5.457}
+
+\end{CSLReferences}
+
+
+\end{document}
