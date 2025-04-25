@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/971732218.svg)](https://doi.org/10.5281/zenodo.15282949)
+
 # Schlichting_MSc_Thesis
 Code and data to reproduce my master's thesis.  
 
