@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.17)  25 APR 2025 10:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.17)  25 APR 2025 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -709,12 +709,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [23]
-<Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf, id=361, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf, id=359, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf  used on input line 516.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf, id=362, 433.62pt x 433.62pt>
+<Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf, id=360, 433.62pt x 433.62pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf  used on input line 523.
@@ -730,7 +730,7 @@ LaTeX Warning: Float too large for page by 56.88972pt on input line 525.
 [25 <./Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf>]
 
 [26 <./Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf>]
-<Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf, id=396, 252.945pt x 252.945pt>
+<Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf, id=392, 252.945pt x 252.945pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf  used on input line 533.
@@ -747,12 +747,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [29]
 
 [30]
-<Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf, id=424, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf, id=420, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf  used on input line 590.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf, id=426, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf, id=422, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf  used on input line 598.
@@ -770,30 +770,30 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [33 <./Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf>]
-<Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf, id=459, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf, id=455, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf  used on input line 612.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4913) has occurred while \output is active []
 
 
 
 [34]
 
 [35 <./Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf>]
-<Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf, id=483, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf, id=479, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf  used on input line 624.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf, id=484, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf, id=480, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf  used on input line 630.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf, id=486, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf, id=482, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf  used on input line 640.
@@ -812,7 +812,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [39 <./Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf>]
 
 [40]
-<Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf, id=539, 469.755pt x 325.215pt>
+<Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf, id=535, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf>
 Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf  used on input line 685.
@@ -941,10 +941,10 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  83i,12n,93p,2301b,675s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Schlichting_MSc_Thesis.pdf (81 pages, 1168316 bytes).
+Output written on Schlichting_MSc_Thesis.pdf (81 pages, 1168085 bytes).
 PDF statistics:
- 1022 PDF objects out of 1200 (max. 8388607)
- 878 compressed objects within 9 object streams
+ 1018 PDF objects out of 1200 (max. 8388607)
+ 874 compressed objects within 9 object streams
  237 named destinations out of 1000 (max. 500000)
  317 words of extra memory for PDF output out of 10000 (max. 10000000)
 
