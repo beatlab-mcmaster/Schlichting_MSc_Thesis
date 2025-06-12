@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.17)  25 APR 2025 19:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.17)  12 JUN 2025 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -211,6 +211,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks21
 \@floatcapt=\box55
 ))
+\pandoc@box=\box56
 \cslhangindent=\skip78
 \csllabelwidth=\skip79
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
@@ -240,7 +241,7 @@ Language: nil 2025/02/14 v25.4 Nil language
 \l@nil=\language6
 )) (c:/ProgramData/TinyTeX/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
 Package babel Info: Importing data for english
-(babel)             from babel-en.ini. Reported on input line 86.
+(babel)             from babel-en.ini. Reported on input line 88.
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
@@ -255,11 +256,11 @@ Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 \LTpost=\skip86
 \LTchunksize=\count292
 \LTcapwidth=\dimen176
-\LT@head=\box56
-\LT@firsthead=\box57
-\LT@foot=\box58
-\LT@lastfoot=\box59
-\LT@gbox=\box60
+\LT@head=\box57
+\LT@firsthead=\box58
+\LT@foot=\box59
+\LT@lastfoot=\box60
+\LT@gbox=\box61
 \LT@cols=\count293
 \LT@rows=\count294
 \c@LT@tables=\count295
@@ -278,12 +279,12 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \col@sep=\dimen178
-\ar@mcellbox=\box61
+\ar@mcellbox=\box62
 \extrarowheight=\dimen179
 \NC@list=\toks23
 \extratabsurround=\skip89
 \backup@length=\skip90
-\ar@cellbox=\box62
+\ar@cellbox=\box63
 )
 \TX@col@width=\dimen180
 \TX@old@table=\dimen181
@@ -309,7 +310,7 @@ Package: expl3 2025-01-18 L3 programming layer (loader)
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count299
-\l__pdf_internal_box=\box63
+\l__pdf_internal_box=\box64
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -439,24 +440,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./Schlichting_MSc_Thesis.aux)
 \openout1 = `Schlichting_MSc_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -508,18 +509,18 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 184.
+Package hyperref Info: Link coloring OFF on input line 187.
 
 
 Class apa6 Warning: Abstract not defined.
 
-Class apa6 Info: Keywords not defined on input line 186.
+Class apa6 Info: Keywords not defined on input line 189.
 
 
 [1
 
 {c:/ProgramData/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/ProgramData/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 196.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 199.
  (c:/ProgramData/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -530,7 +531,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \newpage
+l.221 \newpage
                [2]
 
 [3]
@@ -633,8 +634,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/Innocents_Diagram_Hypotheses_v2.png, id=275, 930.5967pt x 303.0522pt>
 File: images/Innocents_Diagram_Hypotheses_v2.png Graphic file (type png)
 <use images/Innocents_Diagram_Hypotheses_v2.png>
-Package pdftex.def Info: images/Innocents_Diagram_Hypotheses_v2.png  used on input line 336.
-(pdftex.def)             Requested size: 469.74173pt x 152.9731pt.
+Package pdftex.def Info: images/Innocents_Diagram_Hypotheses_v2.png  used on input line 339.
+(pdftex.def)             Requested size: 469.75502pt x 152.9731pt.
 
 
 [9 <./images/Innocents_Diagram_Hypotheses_v2.png>]
@@ -648,8 +649,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <images/Innocents_Diagram_StudyDesign.png, id=295, 1626.7977pt x 380.8629pt>
 File: images/Innocents_Diagram_StudyDesign.png Graphic file (type png)
 <use images/Innocents_Diagram_StudyDesign.png>
-Package pdftex.def Info: images/Innocents_Diagram_StudyDesign.png  used on input line 358.
-(pdftex.def)             Requested size: 469.7486pt x 109.97667pt.
+Package pdftex.def Info: images/Innocents_Diagram_StudyDesign.png  used on input line 361.
+(pdftex.def)             Requested size: 469.75502pt x 109.97667pt.
 
 
 [12 <./images/Innocents_Diagram_StudyDesign.png>]
@@ -665,20 +666,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [15]
-Overfull \hbox (36.74574pt too wide) in paragraph at lines 391--421
+Overfull \hbox (36.74574pt too wide) in paragraph at lines 394--424
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 30.04962pt on input line 423.
+LaTeX Warning: Float too large for page by 30.04962pt on input line 426.
 
 
-Overfull \hbox (2.44897pt too wide) in paragraph at lines 431--465
+Overfull \hbox (2.44897pt too wide) in paragraph at lines 434--468
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 102.76587pt on input line 467.
+LaTeX Warning: Float too large for page by 102.76587pt on input line 470.
 
 
 
@@ -712,16 +713,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf, id=359, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf  used on input line 516.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/affect-changeplots-1.pdf  used on input line 519.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 <Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf, id=360, 433.62pt x 433.62pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf  used on input line 523.
-(pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf  used on input line 526.
+(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
 
 
-LaTeX Warning: Float too large for page by 56.88972pt on input line 525.
+LaTeX Warning: Float too large for page by 56.86989pt on input line 528.
 
 
 
@@ -733,8 +734,8 @@ LaTeX Warning: Float too large for page by 56.88972pt on input line 525.
 <Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf, id=392, 252.945pt x 252.945pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf  used on input line 533.
-(pdftex.def)             Requested size: 252.94823pt x 252.94823pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf  used on input line 536.
+(pdftex.def)             Requested size: 252.94438pt x 252.94438pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -743,6 +744,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [27]
 
 [28 <./Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf>]
+Overfull \hbox (50.4433pt too wide) in paragraph at lines 550--580
+ [] 
+ []
+
+
 
 [29]
 
@@ -750,13 +756,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf, id=420, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf  used on input line 590.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-plots-1.pdf  used on input line 593.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 <Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf, id=422, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf  used on input line 598.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/closeness-lineplots-1.pdf  used on input line 601.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -773,10 +779,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf, id=455, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf  used on input line 612.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/empathy-plots-1.pdf  used on input line 615.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 
-Underfull \vbox (badness 4913) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -786,18 +792,18 @@ Underfull \vbox (badness 4913) has occurred while \output is active []
 <Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf, id=479, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf  used on input line 624.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/awareness-plots-1.pdf  used on input line 627.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 <Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf, id=480, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf  used on input line 630.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/namtpb-lineplots-1.pdf  used on input line 633.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 <Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf, id=482, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf  used on input line 640.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/count-behaviour-1.pdf  used on input line 643.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 
 
 [36]
@@ -815,8 +821,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf, id=535, 469.755pt x 325.215pt>
 File: Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf Graphic file (type pdf)
 <use Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf>
-Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf  used on input line 685.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: Schlichting_MSc_Thesis_files/figure-latex/behaviour-intentionplot-1.pdf  used on input line 688.
+(pdftex.def)             Requested size: 469.75502pt x 325.2142pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -934,14 +940,14 @@ L3 programming layer <2020/03/25>
  ) 
 Here is how much of TeX's memory you used:
  15011 strings out of 475172
- 253513 string characters out of 5765866
- 682974 words of memory out of 5000000
+ 253519 string characters out of 5765866
+ 683007 words of memory out of 5000000
  37542 multiletter control sequences out of 15000+600000
  592445 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 83i,12n,93p,2301b,675s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,12n,93p,2331b,675s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/ProgramData/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on Schlichting_MSc_Thesis.pdf (81 pages, 1168204 bytes).
+Output written on Schlichting_MSc_Thesis.pdf (81 pages, 1168422 bytes).
 PDF statistics:
  1018 PDF objects out of 1200 (max. 8388607)
  874 compressed objects within 9 object streams

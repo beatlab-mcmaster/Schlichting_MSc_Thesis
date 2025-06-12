@@ -27,7 +27,7 @@ header-includes:
 ```{r env-setup, include=FALSE}
 rm(list=ls())
 require(pacman)
-p_load('tidyverse', 'ggplot2', 'ggpubr', 'ggridges', 'ggsignif', 'here', 'lmerTest', 'car', 'psych', 'performance', 'corrplot', 'sjPlot', 'papaja', 'stringdist', 'wordcloud', 'MASS', 'pwr', 'png', 'grid', 'ltm') # removed: GGally::ggpairs(), effectsize::cohens_d()
+p_load('tidyverse', 'ggplot2', 'ggpubr', 'ggridges', 'ggsignif', 'here', 'lmerTest', 'car', 'psych', 'performance', 'corrplot', 'sjPlot', 'papaja', 'stringdist', 'wordcloud', 'MASS', 'pwr', 'png', 'grid', 'ltm', 'conflicted', 'effsize') # removed: GGally::ggpairs(), effectsize::cohens_d()
 # car is needed for vif(), psych is needed for corr.test() and fa(), MASS is needed for polr(), ltm for cronbach.alpha()
 
 here::i_am("Schlichting_MSc_Thesis.Rmd") # find project root
@@ -35,6 +35,11 @@ here::i_am("Schlichting_MSc_Thesis.Rmd") # find project root
 innocents_df <- read_csv(here("data/innocents_df.csv")) # load wide dataframe
 
 source(here("src/LMMfunctions.R"), local = knitr::knit_global()) # load functions
+
+# set preferences in case of command conflicts between loaded packages
+conflicts_prefer(dplyr::select, .quiet = TRUE)
+conflicts_prefer(dplyr::filter, .quiet = TRUE)
+conflicts_prefer(lmerTest::lmer, .quiet = TRUE)
 
 sessionInfo()
 # R version 4.4.1 (2024-06-14 ucrt)
@@ -200,6 +205,7 @@ contrasts(innocents_2long$motivation_socialjustice_dich) <- cbind(YesvsNo = c(-1
 # z-score control variables
 innocents_2long$trait_empathic_concern_z <- my_z_score(innocents_2long$trait_empathic_concern)
 innocents_2long$politics_z <- my_z_score(innocents_2long$politics)
+innocents_2long$trait_openness_z <- my_z_score(innocents_2long$trait_openness)
 
 ### DF over three timepoints (base, intermission, end) for lineplots ###
 
@@ -634,7 +640,7 @@ for (var in sd_vars) {
 Only participants who had watched and evaluated at least the first half of the event were included in the analyses, including participants who had not completed the entire pre-event survey. We checked for rushing within questionnaires (pre-survey, intermission survey, post-event survey), but no participant was faster than our cutoff criterion of 1.5 times the interquartile range of the completion times. We further checked response patterns within measures and found that some participants demonstrated zero variance in the multi-item measures. For participants with zero variance in one measure, that measure was treated as "missing" (`r printnum(novariance_observations, digits = 0)` cases, `r printnum(novariance_observations/total_construct_observations*100, digits = 2)`%) . The resulting sample size for each analysis is reported alongside the results.
 
 ### Statistical modeling
-For each of the potential drivers of prosociality (closeness, emphatic concern, and problem awareness), we used linear mixed models (LMMs) to test the effect of the event on the outcome. Sum-to-Zero contrasts tested whether the outcomes were higher for in-person compared to livestream attendance, after watching the performance compared to after the film, and at the end of the event compared to at intermission. We added the baseline rating of the respective outcome as a covariate, estimating a fixed effect for the entire sample to account for measured variances in the outcome prior to the event. We also added random intercepts for each participant to account for unmeasured variances and capture intra-participant correlations due to the repeated measures design. The outcomes and baseline covariates were z-scored. Missing values for the baseline covariate were imputed with zero (the mean value after z-scoring). We tested whether any control variables had a sizable correlation with the outcome variables ($r \geq .30$), to potentially include them as covariates in the models, but found no correlations reaching that threshold. All models met the assumptions of normally distributed residuals and random intercepts, homogeneity of variances, and did not have multicollinearity issues, unless reported otherwise. The model fit was evaluated against a covariate model predicting the outcome from only the baseline and the random intercept using a Likelihood Ratio Test of the maximum likelihood (ML)-generated models. Main and interaction effects were evaluated using the t-statistic of the parameter estimates and Satterthwaite approximations for degrees of freedom of the restricted maximum likelihood (REML)-generated models, as recommended by @meteyard_best_2020. Cohen's $d$ as effect size measure for the fixed effects was calculated using the equation by @westfall_statistical_2014 [see @brysbaert_power_2018], and interpreted according to the norms by @cohen_power_1992. Significant interactions were decomposed using one-sided paired t-tests.
+For each of the potential drivers of prosociality (closeness, emphatic concern, and problem awareness), we used linear mixed models (LMMs) to test the effect of the event on the outcome. Sum-to-Zero contrasts tested whether the outcomes were higher for in-person compared to livestream attendance, after watching the performance compared to after the film, and at the end of the event compared to at intermission. We added the baseline rating of the respective outcome as a covariate, estimating a fixed effect for the entire sample to account for measured variances in the outcome prior to the event. We also added random intercepts for each participant to account for unmeasured variances and capture intra-participant correlations due to the repeated measures design. The outcomes and baseline covariates were z-scored. Missing values for the baseline covariate were imputed with zero (the mean value after z-scoring). We tested whether any control variables had a sizable correlation with the outcome variables ($r \geq .30$), to potentially include them as covariates in the models. The only correlation reaching that threshold was between problem awareness and openness to experience, `r apa_print(cor.test(innocents_2long$problem_awareness_z, innocents_2long$trait_openness, method = "spearman"))$full_result`. Therefore, the problem awareness model includes openness as an additional covariate. All models met the assumptions of normally distributed residuals and random intercepts, homogeneity of variances, and did not have multicollinearity issues, unless reported otherwise. The model fit was evaluated against a covariate model predicting the outcome from only the baseline and the random intercept using a Likelihood Ratio Test of the maximum likelihood (ML)-generated models. Main and interaction effects were evaluated using the t-statistic of the parameter estimates and Satterthwaite approximations for degrees of freedom of the restricted maximum likelihood (REML)-generated models, as recommended by @meteyard_best_2020. Cohen's $d$ as effect size measure for the fixed effects was calculated using the equation by @westfall_statistical_2014 [see @brysbaert_power_2018], and interpreted according to the norms by @cohen_power_1992. Significant interactions were decomposed using one-sided paired t-tests.
 <!-- baseline covariate vs. random intercept: 
 https://stats.stackexchange.com/a/321707
 https://stats.stackexchange.com/a/118514
@@ -1104,7 +1110,7 @@ control_vars <- c("age", "familiarity", "liking", "priorknowledge", "trait_openn
 # Check correlations with control variables
 dv_corr("ios_anna_z", control_vars, innocents_dichotom, output = "table")
 dv_corr("empathic_concern_z", control_vars, innocents_dichotom, output = "table")
-dv_corr("problem_awareness_z", control_vars, innocents_dichotom, output = "table") 
+dv_corr("problem_awareness_z", control_vars, innocents_dichotom, output = "table") # trait_openness r = .30
 dv_corr("behavioural_intention_z", control_vars, innocents_dichotom, output = "table") # motivation_socialjustice r = .36, trait_empathic_concern r = .30
 dv_corr("behavioural_intention_z", control_vars, subset(innocents_dichotom, timepoint_2 == "End"), output = "table") # motivation_socialjustice r = .32, trait_empathic_concern r = .34
 dv_corr("base_behavioural_intention_z", control_vars, subset(innocents_dichotom, timepoint_2 == "End"), output = "table") # liking r = .40, trait_empathic_concern r = .42, motivation_socialjustice r = .39
@@ -1190,14 +1196,14 @@ empathy_cov <- lmer(empathic_concern_z ~ base_empathic_concern_z + (1|p_id), dat
 
 #### Awareness LMM ###
 
-# awareness_lmm <- lmer(problem_awareness_z ~ base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = innocents_2long)
+# awareness_lmm <- lmer(problem_awareness_z ~ trait_openness_z + base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = innocents_2long)
 # check_assumptions(awareness_lmm, "problem_awareness_z", innocents_2long) # residuals & random intercepts violate normality assumption
 
 # log-transform makes matters worse:
 # innocents_2long <- innocents_2long %>%
 #   mutate(problem_awareness_log = log(problem_awareness))
 # 
-# awareness_log <- lmm_analysis(dv = "problem_awareness_log", formula = "attendance * medium_2 * timepoint_2", data = innocents_2long, control_vars = "base_problem_awareness_z")
+# awareness_log <- lmer(problem_awareness_log ~ trait_openness_z + base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = innocents_2long)
 # check_assumptions(awareness_log, "problem_awareness_log", innocents_2long)
 # 
 # rm(awareness_log)
@@ -1206,7 +1212,7 @@ empathy_cov <- lmer(empathic_concern_z ~ base_empathic_concern_z + (1|p_id), dat
 # innocents_2long <- innocents_2long %>%
 #   mutate(problem_awareness_recpr = 1/(problem_awareness))
 # 
-# awareness_recpr <- lmm_analysis(dv = "problem_awareness_recpr", formula = "attendance * medium_2 * timepoint_2", data = innocents_2long, control_vars = "base_problem_awareness_z")
+# awareness_recpr <- lmer(problem_awareness_recpr ~ trait_openness_z + base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = innocents_2long)
 # check_assumptions(awareness_recpr, "problem_awareness_recpr", innocents_2long)
 # 
 # rm(awareness_recpr)
@@ -1214,18 +1220,18 @@ empathy_cov <- lmer(empathic_concern_z ~ base_empathic_concern_z + (1|p_id), dat
 # Extract random intercepts
 # awareness_intercepts <- ranef(awareness_lmm)$p_id
 # # Find the indices of the most extreme residuals
-# order(abs(awareness_intercepts$`(Intercept)`), decreasing = TRUE)[1:2] # indices: c(85, 27)
-# rownames(awareness_intercepts)[c(85, 27)] # p_id = c("sub-on107", "sub-in028")
+# order(abs(awareness_intercepts$`(Intercept)`), decreasing = TRUE)[1:2] # indices: c(81, 24)
+# rownames(awareness_intercepts)[c(81, 24)] # p_id = c("sub-on107", "sub-in028")
 # 
 # rm(awareness_intercepts)
 
 # Excluding the two outlier intercepts fixed the assumptions
-awareness_lmm <- lmer(problem_awareness_z ~ base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = subset(innocents_2long, !(p_id %in% c("sub-on107", "sub-in028")) & !is.na(problem_awareness_z)))
+awareness_lmm <- lmer(problem_awareness_z ~ trait_openness_z + base_problem_awareness_z + attendance * medium_2 * timepoint_2 + (1|p_id), data = subset(innocents_2long, !(p_id %in% c("sub-on107", "sub-in028")) & !is.na(problem_awareness_z)))
 # check_assumptions(awareness_lmm, "problem_awareness_z", subset(innocents_2long, !(p_id %in% c("sub-on107", "sub-in028")) & !is.na(problem_awareness_z) ))
 summary(awareness_lmm)
 my_effectsize(awareness_lmm)
 
-awareness_cov <- lmer(problem_awareness_z ~ base_problem_awareness_z + (1|p_id), data = subset(innocents_2long, !(p_id %in% c("sub-on107", "sub-in028")) & !is.na(problem_awareness_z)))
+awareness_cov <- lmer(problem_awareness_z ~ trait_openness_z + base_problem_awareness_z + (1|p_id), data = subset(innocents_2long, !(p_id %in% c("sub-on107", "sub-in028")) & !is.na(problem_awareness_z)))
 
 ```
 
@@ -1243,8 +1249,8 @@ model_comp_table <- matrix(ncol = 2, nrow = 0) %>% # initiate table structure
   rbind(c("  LRT Test", model_comp(empathy_cov, empathy_lmm))) %>%
   rbind(c("", "")) %>%
   rbind(c("Awareness$^b$", paste0("$N_{observations} = ", nobs(awareness_lmm), "$; $N_{participants} = ", awareness_lmm@Gp[2], "$"))) %>%
-  rbind(c("  Base Model", "Awareness \\textasciitilde Baseline + (1|Participant)")) %>%
-  rbind(c("  Full Model", "Awareness \\textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)")) %>%
+  rbind(c("  Base Model", "Awareness \\textasciitilde Openness + Baseline + (1|Participant)")) %>%
+  rbind(c("  Full Model", "Awareness \\textasciitilde Openness + Baseline + Attendance * Medium * Time + (1|Participant)")) %>%
   rbind(c("  LRT Test", model_comp(awareness_cov, awareness_lmm)))
   
 # set colnames
@@ -1749,7 +1755,7 @@ rm(empathy_changeplot, empathy_lineplot, empathy_plots)
 ```
 
 ### Awareness
-Audiences already had a high problem awareness before the event, which increased slightly on average ($M = `r printnum(mean(outcomes_change$problem_awareness_c, na.rm = T), digits = 2)`$, $SD = `r printnum(sd(outcomes_change$problem_awareness_c, na.rm = T), digits = 2)`$, see Figure \@ref(fig:awareness-plots) A). The variance explained by the baseline alone was $R_{m}^2 = `r printnum(r2_nakagawa(awareness_cov)[["R2_marginal"]])`$, which together with the fixed effects increased to $R_{m}^2 = `r printnum(r2_nakagawa(awareness_lmm)[["R2_marginal"]])`$. The random intercept variance was $\sigma = `r printnum(VarCorr(awareness_lmm)$p_id[1], digits = 2)`$, summing to a total explained variance of $R_{c}^2 = `r printnum(r2_nakagawa(awareness_lmm)[["R2_conditional"]])`$.
+Audiences already had a high problem awareness before the event, which increased slightly on average ($M = `r printnum(mean(outcomes_change$problem_awareness_c, na.rm = T), digits = 2)`$, $SD = `r printnum(sd(outcomes_change$problem_awareness_c, na.rm = T), digits = 2)`$, see Figure \@ref(fig:awareness-plots) A). The variance explained by the two covariates, openness to experience and baseline problem awareness, was $R_{m}^2 = `r printnum(r2_nakagawa(awareness_cov)[["R2_marginal"]])`$, which together with the fixed effects increased to $R_{m}^2 = `r printnum(r2_nakagawa(awareness_lmm)[["R2_marginal"]])`$. The random intercept variance was $\sigma = `r printnum(VarCorr(awareness_lmm)$p_id[1], digits = 2)`$, summing to a total explained variance of $R_{c}^2 = `r printnum(r2_nakagawa(awareness_lmm)[["R2_conditional"]])`$. Openness, though correlated with problem awareness, did not significantly predict the outcome.  
 
 Hypothesis 3 predicted that increases in problem awareness would be larger after the film compared to the performance. However, the only significant fixed effect was a small main effect of time, `r eval_fixed(awareness_lmm, "timepoint_2EndvsInter")`, with higher problem awareness at the end of the event compared to intermission (see Figure \@ref(fig:awareness-plots) B). The main effect and interactions involving medium were not significant, indicating no difference between performance and film. Thus, the data did not support Hypothesis 3. Since time did not interact with any other variable, the main effect evaluates the increase in problem awareness in the second half of the event across all media and attendance modes. Hence, only one further post-hoc test was required to test the increase in the first half, which was small but significant, `r apa_print(pa_1sthalf)$full_result`, $d = `r printnum(pa_1sthalf_d$estimate)`$.
 

@@ -7,15 +7,17 @@
 
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
@@ -87,6 +89,9 @@
 % get rid of language-specific shorthands (see #6817):
 \let\LanguageShortHands\languageshorthands
 \def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
 % Manuscript styling
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
@@ -147,10 +152,11 @@
 \makeatletter
 \xapptocmd\appendix
   {\xapptocmd\section
-    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi: #1}}
     {}{\InnerPatchFailed}%
   }
 {}{\PatchFailed}
+\makeatother
 \usepackage{csquotes}
 \geometry{top=3.8cm,bottom=3.8cm}
 
@@ -160,9 +166,6 @@
 \fancypagestyle{titlepage}{\lhead{ } \rhead{ } }
 \fancypagestyle{secondtitle}{\lhead{ } \rhead{ } }
 \makeatother
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -406,7 +409,7 @@ Political Spectrum$^c$ & 5.25 (1.14) & 4.47 (1.66) & 5.07 (1.07) & 5.13 (1.13) &
 Musicianship$^d$ & 2.86 (1.3) & 2.35 (1.11) & 3.03 (1.45) & 2.6 (0.74) & 2.78 (1.25)\\
 Familiarity$^e$ & 2.48 (1.96) & 2.94 (1.95) & 2.93 (1.6) & 2.53 (1.46) & 2.72 (1.76)\\
 Liking$^e$ & 4.81 (1.47) & 4.23 (1.54) & 4.25 (1.41) & 4.33 (1.56) & 4.41 (1.46)\\
-Openness$^f$ & 3.03 (0.51) & 3.4 (0.46) & 3.12 (0.4) & 3.3 (0.64) & 3.18 (0.5)\\
+Openness$^f$ & 4.14 (0.76) & 3.74 (0.78) & 4.06 (0.67) & 3.88 (0.71) & 3.99 (0.73)\\
 Empathic Concern$^f$ & 4.11 (0.59) & 3.97 (0.56) & 3.92 (0.59) & 3.93 (0.57) & 3.99 (0.58)\\
 Personal Distress$^f$ & 2.63 (0.78) & 2.85 (0.63) & 2.75 (0.66) & 2.86 (0.76) & 2.75 (0.71)\\
 \bottomrule
@@ -494,7 +497,7 @@ Only participants who had watched and evaluated at least the first half of the e
 
 \subsubsection{Statistical modeling}\label{statistical-modeling}
 
-For each of the potential drivers of prosociality (closeness, emphatic concern, and problem awareness), we used linear mixed models (LMMs) to test the effect of the event on the outcome. Sum-to-Zero contrasts tested whether the outcomes were higher for in-person compared to livestream attendance, after watching the performance compared to after the film, and at the end of the event compared to at intermission. We added the baseline rating of the respective outcome as a covariate, estimating a fixed effect for the entire sample to account for measured variances in the outcome prior to the event. We also added random intercepts for each participant to account for unmeasured variances and capture intra-participant correlations due to the repeated measures design. The outcomes and baseline covariates were z-scored. Missing values for the baseline covariate were imputed with zero (the mean value after z-scoring). We tested whether any control variables had a sizable correlation with the outcome variables (\(r \geq .30\)), to potentially include them as covariates in the models, but found no correlations reaching that threshold. All models met the assumptions of normally distributed residuals and random intercepts, homogeneity of variances, and did not have multicollinearity issues, unless reported otherwise. The model fit was evaluated against a covariate model predicting the outcome from only the baseline and the random intercept using a Likelihood Ratio Test of the maximum likelihood (ML)-generated models. Main and interaction effects were evaluated using the t-statistic of the parameter estimates and Satterthwaite approximations for degrees of freedom of the restricted maximum likelihood (REML)-generated models, as recommended by Meteyard and Davies (2020). Cohen's \(d\) as effect size measure for the fixed effects was calculated using the equation by Westfall, Kenny, and Judd (2014; see Brysbaert and Stevens, 2018), and interpreted according to the norms by Cohen (1992). Significant interactions were decomposed using one-sided paired t-tests.
+For each of the potential drivers of prosociality (closeness, emphatic concern, and problem awareness), we used linear mixed models (LMMs) to test the effect of the event on the outcome. Sum-to-Zero contrasts tested whether the outcomes were higher for in-person compared to livestream attendance, after watching the performance compared to after the film, and at the end of the event compared to at intermission. We added the baseline rating of the respective outcome as a covariate, estimating a fixed effect for the entire sample to account for measured variances in the outcome prior to the event. We also added random intercepts for each participant to account for unmeasured variances and capture intra-participant correlations due to the repeated measures design. The outcomes and baseline covariates were z-scored. Missing values for the baseline covariate were imputed with zero (the mean value after z-scoring). We tested whether any control variables had a sizable correlation with the outcome variables (\(r \geq .30\)), to potentially include them as covariates in the models. The only correlation reaching that threshold was between problem awareness and openness to experience, \(r_{\mathrm{s}} = .30\), \(S = 533,526.78\), \(p < .001\). Therefore, the problem awareness model includes openness as an additional covariate. All models met the assumptions of normally distributed residuals and random intercepts, homogeneity of variances, and did not have multicollinearity issues, unless reported otherwise. The model fit was evaluated against a covariate model predicting the outcome from only the baseline and the random intercept using a Likelihood Ratio Test of the maximum likelihood (ML)-generated models. Main and interaction effects were evaluated using the t-statistic of the parameter estimates and Satterthwaite approximations for degrees of freedom of the restricted maximum likelihood (REML)-generated models, as recommended by Meteyard and Davies (2020). Cohen's \(d\) as effect size measure for the fixed effects was calculated using the equation by Westfall, Kenny, and Judd (2014; see Brysbaert and Stevens, 2018), and interpreted according to the norms by Cohen (1992). Significant interactions were decomposed using one-sided paired t-tests.
 
 To test the influence of closeness, empathic concern, problem awareness, and behavioural intention on observed behaviour, we used ordinal logistic regression to predict the number of behaviours participants performed. Again, we tested for control variables with a sizable correlation with the behaviour sum score, but did not find any that reached the threshold (\(r \geq .30\)). All predictors were z-scored. Model fit was evaluated using a Likelihood Ratio Test. Predictors were interpreted as having a significant effect if the 95\% confidence interval of the Odd's Ratio (calculated as \((Coefficient \pm 1.96*Standard Error)^2\)) did not cross 1.
 
@@ -520,7 +523,7 @@ We assessed participants' affect along three bipolar dimensions. Throughout the 
 
 \begin{figure}
 \centering
-\includegraphics{Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Schlichting_MSc_Thesis_files/figure-latex/engagement-plots-1.pdf}}
 \caption{\label{fig:engagement-plots}A: Mean and CI of engagement items, with bar colours indicating order and medium. Ratings range from 1 (not at all) to 7 (extremely), except for Duration which ranges from -3 (much too long) to +3 (much too short). Note that this plot is pooled over livestream and in-person attendance. B: Comparison of engagement factor score by order and medium, split for in-person (left) and livestream (right) attendance. Probability density functions show the shape of the factor score distribution for each condition, with the condition mean indicated by white lines, and individual datapoints represented by small black lines.}
 \end{figure}
 
@@ -530,7 +533,7 @@ Despite the decreases in positivity, relaxation, and alertness, participants rat
 
 \begin{figure}
 \centering
-\includegraphics{Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{Schlichting_MSc_Thesis_files/figure-latex/wordcloud-comparison-1.pdf}}
 \caption{\label{fig:wordcloud-comparison}Comparison wordcloud of performance descriptions with and without context of the film. Purple words (top) were more frequently used to describe the performance that had the context of the film, and blue words (bottom) were more frequently used to describe the performance that did not have the context. Font size represents the difference in word frequency between conditions, with larger words indicating greater differences. Only words that differed by at least two mentions are shown. Figure created with \emph{wordcloud} (Fellows, 2018).}
 \end{figure}
 
@@ -561,10 +564,10 @@ Base Model & Empathy \textasciitilde Baseline + (1|Participant)\\
 Full Model & Empathy \textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)\\
 LRT Test & $\chi^2 (7) = 44.86$, $p < .001$\\
  & \\
-Awareness$^b$ & $N_{observations} = 169$; $N_{participants} = 91$\\
-Base Model & Awareness \textasciitilde Baseline + (1|Participant)\\
-Full Model & Awareness \textasciitilde Baseline + Attendance * Medium * Time + (1|Participant)\\
-LRT Test & $\chi^2 (7) = 17.89$, $p = 0.012$\\
+Awareness$^b$ & $N_{observations} = 162$; $N_{participants} = 87$\\
+Base Model & Awareness \textasciitilde Openness + Baseline + (1|Participant)\\
+Full Model & Awareness \textasciitilde Openness + Baseline + Attendance * Medium * Time + (1|Participant)\\
+LRT Test & $\chi^2 (7) = 17.72$, $p = 0.013$\\
 \bottomrule
 \addlinespace
 \end{tabular}
@@ -614,9 +617,9 @@ Time had a moderate effect on empathic concern, \(\beta = 0.18\), \(t (80) = 5.6
 
 \subsubsection{Awareness}\label{awareness}
 
-Audiences already had a high problem awareness before the event, which increased slightly on average (\(M = 0.46\), \(SD = 0.69\), see Figure \ref{fig:awareness-plots} A). The variance explained by the baseline alone was \(R_{m}^2 = 0.56\), which together with the fixed effects increased to \(R_{m}^2 = 0.59\). The random intercept variance was \(\sigma = 0.21\), summing to a total explained variance of \(R_{c}^2 = 0.81\).
+Audiences already had a high problem awareness before the event, which increased slightly on average (\(M = 0.46\), \(SD = 0.69\), see Figure \ref{fig:awareness-plots} A). The variance explained by the two covariates, openness to experience and baseline problem awareness, was \(R_{m}^2 = 0.58\), which together with the fixed effects increased to \(R_{m}^2 = 0.60\). The random intercept variance was \(\sigma = 0.21\), summing to a total explained variance of \(R_{c}^2 = 0.82\). Openness, though correlated with problem awareness, did not significantly predict the outcome.
 
-Hypothesis 3 predicted that increases in problem awareness would be larger after the film compared to the performance. However, the only significant fixed effect was a small main effect of time, \(\beta = 0.12\), \(t (84) = 3.2\), \(p = 0.002\), \(d = 0.38\), with higher problem awareness at the end of the event compared to intermission (see Figure \ref{fig:awareness-plots} B). The main effect and interactions involving medium were not significant, indicating no difference between performance and film. Thus, the data did not support Hypothesis 3. Since time did not interact with any other variable, the main effect evaluates the increase in problem awareness in the second half of the event across all media and attendance modes. Hence, only one further post-hoc test was required to test the increase in the first half, which was small but significant, \(M_D = 0.26\), 95\% CI \([0.15, \infty]\), \(t(89) = 3.84\), \(p < .001\), \(d = 0.31\).
+Hypothesis 3 predicted that increases in problem awareness would be larger after the film compared to the performance. However, the only significant fixed effect was a small main effect of time, \(\beta = 0.12\), \(t (81) = 3.36\), \(p = 0.001\), \(d = 0.4\), with higher problem awareness at the end of the event compared to intermission (see Figure \ref{fig:awareness-plots} B). The main effect and interactions involving medium were not significant, indicating no difference between performance and film. Thus, the data did not support Hypothesis 3. Since time did not interact with any other variable, the main effect evaluates the increase in problem awareness in the second half of the event across all media and attendance modes. Hence, only one further post-hoc test was required to test the increase in the first half, which was small but significant, \(M_D = 0.26\), 95\% CI \([0.15, \infty]\), \(t(89) = 3.84\), \(p < .001\), \(d = 0.31\).
 
 
 
